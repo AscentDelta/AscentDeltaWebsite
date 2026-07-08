@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111827;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#14b5bc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d8a90;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#14b5bc;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#14b5bc;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#14b5bc;stop-opacity:0.2" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)" />
+
+  <!-- Subtle grid -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="0.5">
+    <line x1="0" y1="83" x2="800" y2="83"/>
+    <line x1="0" y1="166" x2="800" y2="166"/>
+    <line x1="0" y1="249" x2="800" y2="249"/>
+    <line x1="0" y1="332" x2="800" y2="332"/>
+    <line x1="0" y1="415" x2="800" y2="415"/>
+    <line x1="100" y1="0" x2="100" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="500"/>
+    <line x1="300" y1="0" x2="300" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="500" y1="0" x2="500" y2="500"/>
+    <line x1="600" y1="0" x2="600" y2="500"/>
+    <line x1="700" y1="0" x2="700" y2="500"/>
+  </g>
+
+  <!-- Teal ambient glow -->
+  <ellipse cx="600" cy="150" rx="220" ry="140" fill="#14b5bc" opacity="0.06" filter="url(#softglow)"/>
+  <ellipse cx="200" cy="380" rx="160" ry="100" fill="#14b5bc" opacity="0.04" filter="url(#softglow)"/>
+
+  <!-- Growth chart bars -->
+  <g opacity="0.15">
+    <rect x="120" y="340" width="40" height="80" rx="4" fill="#14b5bc"/>
+    <rect x="175" y="300" width="40" height="120" rx="4" fill="#14b5bc"/>
+    <rect x="230" y="260" width="40" height="160" rx="4" fill="#14b5bc"/>
+    <rect x="285" y="210" width="40" height="210" rx="4" fill="#14b5bc"/>
+    <rect x="340" y="170" width="40" height="250" rx="4" fill="#14b5bc"/>
+  </g>
+
+  <!-- Main growth line -->
+  <polyline
+    points="120,400 200,340 300,280 400,200 500,150 620,100 720,70"
+    fill="none"
+    stroke="url(#lineGrad)"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#glow)"
+    opacity="0.9"
+  />
+
+  <!-- Area fill under line -->
+  <polygon
+    points="120,400 200,340 300,280 400,200 500,150 620,100 720,70 720,460 120,460"
+    fill="url(#tealGrad)"
+    opacity="0.05"
+  />
+
+  <!-- Data point nodes on line -->
+  <circle cx="120" cy="400" r="5" fill="#14b5bc" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="200" cy="340" r="5" fill="#14b5bc" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="300" cy="280" r="5" fill="#14b5bc" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="400" cy="200" r="6" fill="#14b5bc" filter="url(#glow)"/>
+  <circle cx="500" cy="150" r="5" fill="#14b5bc" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="620" cy="100" r="5" fill="#14b5bc" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="720" cy="70" r="7" fill="#14b5bc" filter="url(#softglow)"/>
+
+  <!-- Outer rings on key nodes -->
+  <circle cx="400" cy="200" r="14" fill="none" stroke="#14b5bc" stroke-width="1" opacity="0.3"/>
+  <circle cx="720" cy="70" r="18" fill="none" stroke="#14b5bc" stroke-width="1" opacity="0.3"/>
+  <circle cx="720" cy="70" r="28" fill="none" stroke="#14b5bc" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Connecting network dots (top right cluster) -->
+  <circle cx="640" cy="200" r="3" fill="#ffffff" opacity="0.2"/>
+  <circle cx="680" cy="170" r="2.5" fill="#ffffff" opacity="0.15"/>
+  <circle cx="660" cy="240" r="2" fill="#14b5bc" opacity="0.4"/>
+  <line x1="640" y1="200" x2="680" y2="170" stroke="#ffffff" stroke-width="0.5" opacity="0.1"/>
+  <line x1="640" y1="200" x2="660" y2="240" stroke="#14b5bc" stroke-width="0.5" opacity="0.2"/>
+  <line x1="680" y1="170" x2="720" y2="70" stroke="#14b5bc" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Metric labels -->
+  <g font-family="system-ui, -apple-system, sans-serif">
+    <!-- Day 0 label -->
+    <text x="120" y="445" fill="#ffffff" font-size="10" opacity="0.3" text-anchor="middle">Day 0</text>
+    <!-- Day 100 label -->
+    <text x="720" y="55" fill="#14b5bc" font-size="10" opacity="0.8" text-anchor="middle" filter="url(#glow)">Day 100</text>
+    <!-- Arrow up indicator -->
+    <text x="730" y="55" fill="#14b5bc" font-size="10" opacity="0.8">↗</text>
+  </g>
+
+  <!-- Floating stat chips -->
+  <g>
+    <!-- Chip 1 -->
+    <rect x="440" y="160" width="90" height="30" rx="15" fill="#14b5bc" opacity="0.12"/>
+    <rect x="440" y="160" width="90" height="30" rx="15" fill="none" stroke="#14b5bc" stroke-width="0.8" opacity="0.4"/>
+    <text x="485" y="179" fill="#14b5bc" font-size="10" font-family="system-ui, sans-serif" font-weight="600" text-anchor="middle" opacity="0.9">+3X Revenue</text>
+
+    <!-- Chip 2 -->
+    <rect x="270" y="240" width="80" height="28" rx="14" fill="#14b5bc" opacity="0.1"/>
+    <rect x="270" y="240" width="80" height="28" rx="14" fill="none" stroke="#14b5bc" stroke-width="0.8" opacity="0.3"/>
+    <text x="310" y="258" fill="#14b5bc" font-size="10" font-family="system-ui, sans-serif" font-weight="600" text-anchor="middle" opacity="0.8">CAC ↓40%</text>
+  </g>
+
+  <!-- Bottom decorative line -->
+  <line x1="80" y1="460" x2="720" y2="460" stroke="#ffffff" stroke-width="0.5" opacity="0.06"/>
+
+  <!-- Brand watermark -->
+  <text x="720" y="490" fill="#ffffff" font-size="11" font-family="system-ui, sans-serif" font-weight="700" text-anchor="end" opacity="0.15" letter-spacing="2">100DAYS.CO</text>
+</svg>
