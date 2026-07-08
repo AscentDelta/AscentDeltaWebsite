@@ -79,8 +79,8 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-550 uppercase tracking-wider">Email Us</p>
-                <a href="mailto:hello@go100days.com" className="text-lg font-medium text-black dark:text-white hover:text-[#14b5bc] dark:hover:text-[#14b5bc] transition-colors">
-                  hello@go100days.com
+                <a href="mailto:ascentxdelta@gmail.com" className="text-lg font-medium text-black dark:text-white hover:text-[#14b5bc] dark:hover:text-[#14b5bc] transition-colors">
+                  ascentxdelta@gmail.com
                 </a>
               </div>
             </div>

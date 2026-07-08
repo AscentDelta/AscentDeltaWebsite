@@ -24,7 +24,7 @@ export const blogs = [
       },
       {
         type: 'p',
-        text: "At 100days, we've audited multiple D2C P&Ls across beauty, personal care, nutrition, fashion, and home categories. The pattern is consistent: scaling amplifies weak unit economics.",
+        text: "At AscentDelta, we've audited multiple D2C P&Ls across beauty, personal care, nutrition, fashion, and home categories. The pattern is consistent: scaling amplifies weak unit economics.",
       },
       { type: 'h2', text: 'What Are D2C Unit Economics?' },
       {
@@ -115,7 +115,7 @@ export const blogs = [
       { type: 'h2', text: 'The 100-Day Framework to Fix D2C Unit Economics' },
       {
         type: 'p',
-        text: 'At 100days, we break profitability correction into three phases.',
+        text: 'At AscentDelta, we break profitability correction into three phases.',
       },
       { type: 'h3', text: 'Phase 1 (Days 0–30): Diagnose the Leakages' },
       {
@@ -229,7 +229,7 @@ export const blogs = [
       },
       {
         type: 'p',
-        text: "At 100days, we operate at the intersection of marketing and operations — because profitability isn't a media problem. It's a systems problem.",
+        text: "At AscentDelta, we operate at the intersection of marketing and operations — because profitability isn't a media problem. It's a systems problem.",
       },
       { type: 'h2', text: 'Growth Without Profit Is Temporary' },
       {
@@ -282,7 +282,7 @@ export const blogs = [
       },
       {
         type: 'p',
-        text: "At 100days.co we provide expertise to design, execute and optimise your brand's campaign with the help of advanced analytics, audience targeting, and platform algorithms. Our experts make sure that your brand's visibility and sales are on the upward slope.",
+        text: "At AscentDelta, we provide expertise to design, execute and optimise your brand's campaign with the help of advanced analytics, audience targeting, and platform algorithms. Our experts make sure that your brand's visibility and sales are on the upward slope.",
       },
       { type: 'h2', text: '5 Strategies to Conquer Q-Comm' },
       { type: 'h3', text: '1. Know Where Your Customer Is' },

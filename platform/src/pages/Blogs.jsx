@@ -70,7 +70,7 @@ export default function Blogs() {
           Blogs
         </h1>
         <p className="text-xl md:text-2xl text-black dark:text-neutral-300 font-light leading-relaxed mb-16 max-w-xl">
-          Perspectives on D2C growth, profitability, and commerce strategy from the 100days team.
+          Perspectives on D2C growth, profitability, and commerce strategy from the AscentDelta team.
         </p>
       </motion.div>
 

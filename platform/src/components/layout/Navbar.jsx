@@ -30,7 +30,7 @@ export default function Navbar() {
           >
             <img
               src={theme === 'dark' ? '/logo-white.png' : '/logo-black.png'}
-              alt="100Days"
+              alt="AscentDelta"
               className="h-8 w-auto"
             />
           </Link>

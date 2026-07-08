@@ -4,7 +4,7 @@ export default function About() {
   const timeline = [
     {
       heading: "How We Started",
-      text: "Founded by the team behind Bombay Shaving Company and Bombae, 100Days was incepted to help investor brands accelerate online revenue with precision. With over 50 years of combined experience, we manage 10+ DTC stores across diverse sectors with powerful in-house digital tools and content.",
+      text: "Founded by the team behind Bombay Shaving Company and Bombae, AscentDelta was incepted to help investor brands accelerate online revenue with precision. With over 50 years of combined experience, we manage 10+ DTC stores across diverse sectors with powerful in-house digital tools and content.",
       img: "1.png",
       span: "md:col-span-2",
       layout: "flex-col lg:flex-row"
@@ -18,7 +18,7 @@ export default function About() {
     },
     {
       heading: "Quietly Building Giants",
-      text: "The team behind 100Days has been quietly has been helping us cumulatively generate colossal numbers.",
+      text: "The team behind AscentDelta has been quietly helping us cumulatively generate colossal numbers.",
       img: "3.png",
       span: "col-span-1",
       layout: "flex-col-reverse"
@@ -108,7 +108,7 @@ export default function About() {
           {[
             {
               title: 'One Unified Team',
-              desc: 'No demarcation, only ownership. The CEO never knows who the client is, and who is from 100Days.',
+              desc: 'No demarcation, only ownership. The CEO never knows who the client is, and who is from AscentDelta.',
             },
             {
               title: 'Entire P&L Ownership',

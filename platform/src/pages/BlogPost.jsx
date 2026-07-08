@@ -159,7 +159,7 @@ export default function BlogPost() {
             Ready to Apply This?
           </p>
           <h3 className="text-2xl font-black tracking-tight mb-4">
-            Build Your <span style={{color: '#14b5bc'}}>100Days</span> Plan
+            Build Your <span style={{color: '#14b5bc'}}>AscentDelta</span> Plan
           </h3>
           <p className="text-neutral-500 dark:text-neutral-400 text-sm mb-6 max-w-md mx-auto">
             Let's audit your D2C business and engineer a path to profitability — in 100 days.

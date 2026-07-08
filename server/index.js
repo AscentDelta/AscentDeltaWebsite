@@ -21,4 +21,4 @@ app.use('/api', scanRouter);
 app.get('/health', (_, res) => res.json({ status: 'ok' }));
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`100Days scan server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`AscentDelta scan server running on http://localhost:${PORT}`));
