@@ -18,11 +18,11 @@ export default function Dialog({ isOpen, onClose, children }) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-neutral-900 w-full max-w-lg rounded-2xl p-8 border border-neutral-200 dark:border-neutral-800 pointer-events-auto relative shadow-2xl"
+              className="bg-neutral-900 w-full max-w-lg rounded-2xl p-8 border border-neutral-800 pointer-events-auto relative shadow-2xl"
             >
               <button
                 onClick={onClose}
-                className="absolute top-6 right-6 text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors"
+                className="absolute top-6 right-6 text-neutral-400 hover:text-white transition-colors"
               >
                 <X size={24} />
               </button>

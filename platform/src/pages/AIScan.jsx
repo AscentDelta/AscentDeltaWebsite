@@ -52,7 +52,7 @@ function ScoreRing({ score, size = 80 }) {
 
 function SpeedCard({ label, value, good }) {
   return (
-    <div className="bg-neutral-100 dark:bg-neutral-800 rounded-xl p-4 text-center">
+    <div className="bg-neutral-800 rounded-xl p-4 text-center">
       <div className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-1">{label}</div>
       <div className={`text-xl font-bold ${good ? 'text-green-600' : 'text-amber-500'}`}>{value ?? 'N/A'}</div>
     </div>
@@ -63,15 +63,15 @@ function SectionCard({ section, data }) {
   const [open, setOpen] = useState(false);
   const c = scoreColor(data.score);
   return (
-    <div className="border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden">
+    <div className="border border-neutral-800 rounded-2xl overflow-hidden">
       <button
         onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center gap-4 p-6 text-left hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+        className="w-full flex items-center gap-4 p-6 text-left hover:bg-neutral-900 transition-colors"
       >
         <span className="text-2xl">{section.icon}</span>
         <div className="flex-1 min-w-0">
-          <div className="font-bold text-neutral-900 dark:text-white text-base">{section.label}</div>
-          <div className="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">{data.headline}</div>
+          <div className="font-bold text-white text-base">{section.label}</div>
+          <div className="text-sm text-neutral-400 mt-0.5 truncate">{data.headline}</div>
         </div>
         <div className="flex items-center gap-3 flex-shrink-0">
           <ScoreRing score={data.score} size={56} />
@@ -88,12 +88,12 @@ function SectionCard({ section, data }) {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             style={{ overflow: 'hidden' }}
           >
-            <div className="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-neutral-100 dark:border-neutral-800 pt-5">
+            <div className="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-neutral-800 pt-5">
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Issues Found</h4>
                 <ul className="space-y-2">
                   {(data.issues || []).map((issue, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-300">
+                    <li key={i} className="flex items-start gap-2 text-sm text-neutral-300">
                       <span className="text-red-400 mt-0.5 flex-shrink-0">✕</span> {issue}
                     </li>
                   ))}
@@ -103,7 +103,7 @@ function SectionCard({ section, data }) {
                 <h4 className="text-xs font-bold uppercase tracking-widest text-green-600 mb-3">Recommendations</h4>
                 <ul className="space-y-2">
                   {(data.recommendations || []).map((rec, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-300">
+                    <li key={i} className="flex items-start gap-2 text-sm text-neutral-300">
                       <span className="text-green-500 mt-0.5 flex-shrink-0">✓</span> {rec}
                     </li>
                   ))}
@@ -171,20 +171,20 @@ export default function AIScan() {
     <div className="w-full max-w-5xl mx-auto px-6 py-24">
       {/* Header */}
       <div className="mb-14">
-        <div className="inline-flex items-center gap-2 bg-[#14b5bc]/10 text-[#14b5bc] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-          <span className="w-2 h-2 bg-[#14b5bc] rounded-full animate-pulse" />
+        <div className="inline-flex items-center gap-2 bg-[#6366f1]/10 text-[#6366f1] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+          <span className="w-2 h-2 bg-[#6366f1] rounded-full animate-pulse" />
           AI-Powered
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.05] text-black dark:text-white">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.05] text-white">
           Website<br />AI Scan
         </h1>
-        <p className="text-xl md:text-2xl text-neutral-500 dark:text-neutral-400 font-light leading-relaxed mt-5 max-w-xl">
+        <p className="text-xl md:text-2xl text-neutral-400 font-light leading-relaxed mt-5 max-w-xl">
           Drop your URL. Get a ruthlessly honest, AI-generated audit — speed, CRO, cart, trust signals, and more. Delivered to your inbox instantly.
         </p>
       </div>
 
       {/* Input card */}
-      <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 mb-10 shadow-sm" style={{boxShadow: '0 2px 24px rgba(0,0,0,0.06)'}}>
+      <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 mb-10 shadow-sm">
         <div className="grid md:grid-cols-2 gap-4 mb-6">
           <div>
             <label className="block text-xs font-bold uppercase tracking-widest text-neutral-400 mb-2">Website URL</label>
@@ -194,7 +194,7 @@ export default function AIScan() {
               onChange={e => setUrl(e.target.value)}
               placeholder="https://yourstore.com"
               disabled={scanning}
-              className="w-full bg-neutral-100 dark:bg-neutral-800 border border-transparent focus:border-[#14b5bc] rounded-xl px-4 py-3.5 text-base text-neutral-900 dark:text-white placeholder-neutral-400 outline-none transition-colors"
+              className="w-full bg-neutral-800 border border-transparent focus:border-[#6366f1] rounded-xl px-4 py-3.5 text-base text-white placeholder-neutral-400 outline-none transition-colors"
             />
           </div>
           <div>
@@ -205,7 +205,7 @@ export default function AIScan() {
               onChange={e => setEmail(e.target.value)}
               placeholder="you@brand.com"
               disabled={scanning}
-              className="w-full bg-neutral-100 dark:bg-neutral-800 border border-transparent focus:border-[#14b5bc] rounded-xl px-4 py-3.5 text-base text-neutral-900 dark:text-white placeholder-neutral-400 outline-none transition-colors"
+              className="w-full bg-neutral-800 border border-transparent focus:border-[#6366f1] rounded-xl px-4 py-3.5 text-base text-white placeholder-neutral-400 outline-none transition-colors"
             />
           </div>
         </div>
@@ -215,7 +215,7 @@ export default function AIScan() {
           onClick={startScan}
           disabled={scanning}
           className="w-full font-bold text-base py-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed text-white"
-          style={{ background: '#14b5bc' }}
+          style={{ background: '#6366f1' }}
         >
           {scanning ? 'Scanning…' : 'Run Deep Scan →'}
         </button>
@@ -230,16 +230,16 @@ export default function AIScan() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
-            className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 mb-10"
+            className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 mb-10"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-3 h-3 bg-[#14b5bc] rounded-full animate-pulse" />
-              <span className="font-bold text-neutral-900 dark:text-white">Deep scan in progress…</span>
+              <div className="w-3 h-3 bg-[#6366f1] rounded-full animate-pulse" />
+              <span className="font-bold text-white">Deep scan in progress…</span>
             </div>
             <div className="space-y-3">
               {SCAN_STEPS.map((step, i) => (
                 <div key={i} className={`flex items-center gap-3 text-sm transition-all duration-500 ${
-                  i < stepIndex ? 'text-green-600' : i === stepIndex ? 'text-neutral-900 dark:text-white font-semibold' : 'text-neutral-300 dark:text-neutral-600'
+                  i < stepIndex ? 'text-green-600' : i === stepIndex ? 'text-white font-semibold' : 'text-neutral-600'
                 }`}>
                   <span className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 text-xs
                     border-current">
@@ -249,9 +249,9 @@ export default function AIScan() {
                 </div>
               ))}
             </div>
-            <div className="mt-6 h-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
+            <div className="mt-6 h-1.5 bg-neutral-800 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-[#14b5bc] rounded-full"
+                className="h-full bg-[#6366f1] rounded-full"
                 animate={{ width: `${((stepIndex + 1) / SCAN_STEPS.length) * 100}%` }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
               />
@@ -277,28 +277,28 @@ export default function AIScan() {
               exit={{ opacity: 0, scale: 0.92, y: 16 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               onClick={e => e.stopPropagation()}
-              className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 max-w-md w-full shadow-2xl text-center"
+              className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 max-w-md w-full shadow-2xl text-center"
             >
               {/* Icon */}
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-                style={{ background: 'rgba(20,181,188,0.12)' }}>
+                style={{ background: 'rgba(99,102,241,0.12)' }}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
                   <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="#14b5bc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
 
-              <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+              <h3 className="text-xl font-bold text-white mb-2">
                 High Demand Right Now
               </h3>
-              <p className="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed mb-6">
+              <p className="text-neutral-400 text-sm leading-relaxed mb-6">
                 Our AI scan servers are currently at capacity. Please wait a moment and try again — your scan will go through shortly.
               </p>
 
               <button
                 onClick={() => setError('')}
                 className="w-full font-bold text-sm py-3.5 rounded-xl text-white hover:opacity-90 transition-opacity"
-                style={{ background: '#14b5bc' }}
+                style={{ background: '#6366f1' }}
               >
                 Got it, I'll try again
               </button>
@@ -318,13 +318,13 @@ export default function AIScan() {
             {/* Download button */}
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Audit Report</h2>
+                <h2 className="text-2xl font-bold text-white">Audit Report</h2>
                 <p className="text-sm text-neutral-400 mt-1">{report.url} · {new Date(report.generatedAt).toLocaleString()}</p>
               </div>
               <button
                 onClick={downloadPDF}
                 className="flex items-center gap-2 text-white text-sm font-bold px-5 py-3 rounded-xl hover:opacity-80 transition-opacity"
-                style={{ background: '#14b5bc' }}
+                style={{ background: '#6366f1' }}
               >
                 ↓ Download / Print
               </button>
@@ -332,18 +332,18 @@ export default function AIScan() {
 
             <div ref={reportRef} id="ai-report">
               {/* Overall score hero */}
-              <div className="bg-neutral-100 dark:bg-black border border-neutral-200 dark:border-transparent rounded-3xl p-8 mb-6 flex flex-col md:flex-row items-center gap-8">
+              <div className="bg-black border border-transparent rounded-3xl p-8 mb-6 flex flex-col md:flex-row items-center gap-8">
                 <ScoreRing score={report.ai.overallScore} size={120} />
                 <div className="flex-1">
-                  <div className="text-[#14b5bc] text-xs font-bold uppercase tracking-widest mb-2">Overall Score · Grade {report.ai.grade}</div>
-                  <p className="text-neutral-800 dark:text-white text-lg leading-relaxed">{report.ai.summary}</p>
+                  <div className="text-[#6366f1] text-xs font-bold uppercase tracking-widest mb-2">Overall Score · Grade {report.ai.grade}</div>
+                  <p className="text-white text-lg leading-relaxed">{report.ai.summary}</p>
                 </div>
               </div>
 
               {/* Speed metrics */}
               {(report.speed.mobile || report.speed.desktop) && (
-                <div className="border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 mb-6">
-                  <h3 className="font-bold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
+                <div className="border border-neutral-800 rounded-2xl p-6 mb-6">
+                  <h3 className="font-bold text-white mb-4 flex items-center gap-2">
                     <span>⚡</span> Page Speed — Google Lighthouse
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
@@ -362,19 +362,19 @@ export default function AIScan() {
               )}
 
               {/* Top priorities */}
-              <div className="bg-neutral-100 dark:bg-neutral-950 border border-neutral-200 dark:border-transparent rounded-2xl p-6 mb-6">
-                <h3 className="font-bold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
+              <div className="bg-neutral-950 border border-transparent rounded-2xl p-6 mb-6">
+                <h3 className="font-bold text-white mb-4 flex items-center gap-2">
                   <span>🎯</span> Top 5 Priority Actions
                 </h3>
                 <div className="space-y-3">
                   {(report.ai.topPriorities || []).map(p => (
-                    <div key={p.priority} className="flex items-start gap-4 bg-white dark:bg-white/5 border border-neutral-200 dark:border-transparent rounded-xl px-5 py-4">
-                      <span className="text-[#14b5bc] font-black text-lg flex-shrink-0">#{p.priority}</span>
+                    <div key={p.priority} className="flex items-start gap-4 bg-white/5 border border-transparent rounded-xl px-5 py-4">
+                      <span className="text-[#6366f1] font-black text-lg flex-shrink-0">#{p.priority}</span>
                       <div className="flex-1 min-w-0">
-                        <div className="text-neutral-900 dark:text-white font-semibold text-sm">{p.action}</div>
+                        <div className="text-white font-semibold text-sm">{p.action}</div>
                         <div className="flex gap-3 mt-1">
-                          <span className="text-xs text-neutral-500">Impact: <span className="text-[#14b5bc] font-bold">{p.impact}</span></span>
-                          <span className="text-xs text-neutral-500">Effort: <span className="text-neutral-700 dark:text-neutral-300 font-bold">{p.effort}</span></span>
+                          <span className="text-xs text-neutral-500">Impact: <span className="text-[#6366f1] font-bold">{p.impact}</span></span>
+                          <span className="text-xs text-neutral-500">Effort: <span className="text-neutral-300 font-bold">{p.effort}</span></span>
                           <span className="text-xs text-neutral-500">{p.timeframe}</span>
                         </div>
                       </div>
@@ -394,7 +394,7 @@ export default function AIScan() {
 
               {/* Footer */}
               <div className="mt-8 text-center text-xs text-neutral-400">
-                Report generated by <span className="text-[#14b5bc] font-bold">AscentDelta AI Scan</span>
+                Report generated by <span className="text-[#6366f1] font-bold">AscentDelta AI Scan</span>
               </div>
             </div>
           </motion.div>

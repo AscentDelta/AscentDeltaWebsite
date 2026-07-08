@@ -36,10 +36,10 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        'service_13y9211',
-        'template_lztcq5d',
+        'service_g8gfw44',
+        'template_u21y8uh',
         formData,
-        'ambDOfaJJ-98n0jEy'
+        'sgErgbe_-bjMETd8d'
       );
       setStatus('SUCCESS');
     } catch (error) {
@@ -61,10 +61,10 @@ export default function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[auto_1fr] gap-x-16 gap-y-8 lg:gap-y-12 items-start w-full">
         {/* Heading — top on both mobile and desktop */}
         <div className="lg:col-span-5 lg:row-start-1 order-1">
-          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-black dark:text-white mb-8">
+          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-white mb-8">
             Let's Connect
           </h1>
-          <p className="text-xl md:text-2xl text-black dark:text-neutral-300 font-light leading-relaxed">
+          <p className="text-xl md:text-2xl text-neutral-300 font-light leading-relaxed">
             We'd love to hear from you. Whether you have questions, feedback, or partnership ideas—our team is here to help. Reach out and we'll get back to you as soon as possible.
           </p>
         </div>
@@ -72,49 +72,49 @@ export default function Contact() {
         {/* Contact info — below form on mobile, bottom-left on desktop */}
         <div className="lg:col-span-5 lg:row-start-2 order-3 space-y-6">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#14b5bc] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+              <div className="w-12 h-12 rounded-full bg-[#6366f1] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
               <div>
-                <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-550 uppercase tracking-wider">Email Us</p>
-                <a href="mailto:ascentxdelta@gmail.com" className="text-lg font-medium text-black dark:text-white hover:text-[#14b5bc] dark:hover:text-[#14b5bc] transition-colors">
+                <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Email Us</p>
+                <a href="mailto:ascentxdelta@gmail.com" className="text-lg font-medium text-white hover:text-[#6366f1] transition-colors">
                   ascentxdelta@gmail.com
                 </a>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#14b5bc] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+              <div className="w-12 h-12 rounded-full bg-[#6366f1] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
               <div>
-                <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-550 uppercase tracking-wider">Call Us</p>
-                <a href="tel:+919643601472" className="text-lg font-medium text-black dark:text-white hover:text-[#14b5bc] dark:hover:text-[#14b5bc] transition-colors">
-                  +91-9643601472
+                <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Call Us</p>
+                <a href="tel:+918146830484" className="text-lg font-medium text-white hover:text-[#6366f1] transition-colors">
+                  +91 8146830484
                 </a>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#14b5bc] flex items-center justify-center text-white flex-shrink-0 shadow-lg mt-1">
+              <div className="w-12 h-12 rounded-full bg-[#6366f1] flex items-center justify-center text-white flex-shrink-0 shadow-lg mt-1">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
               <div>
-                <p className="text-xs font-semibold text-neutral-400 dark:text-neutral-550 uppercase tracking-wider">Office</p>
+                <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Office</p>
                 <a
                   href="https://maps.app.goo.gl/NyHFpD3vWrvgn6Xz8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base font-medium text-neutral-700 dark:text-neutral-300 hover:text-[#14b5bc] dark:hover:text-[#14b5bc] transition-colors"
+                  className="text-base font-medium text-neutral-300 hover:text-[#6366f1] transition-colors"
                 >
-                  5th Floor, Vipul Plaza, Suncity,<br />Sector 54, Gurugram, 122011
+                  AscentDelta, Ambala-Chandigarh Road,<br />Chandigarh, Zirakpur, Punjab 140603
                 </a>
               </div>
             </div>
@@ -122,24 +122,24 @@ export default function Contact() {
 
         {/* Form — second on mobile, right column spanning both rows on desktop */}
         <div className="lg:col-span-7 lg:row-span-2 lg:row-start-1 w-full order-2">
-          <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-xl rounded-3xl p-8 sm:p-10">
-            <h2 className="text-3xl font-bold mb-2 text-black dark:text-white">Get in Touch with Us</h2>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-8">
+          <div className="bg-neutral-900 border border-neutral-800 shadow-xl rounded-3xl p-8 sm:p-10">
+            <h2 className="text-3xl font-bold mb-2 text-white">Get in Touch with Us</h2>
+            <p className="text-sm text-neutral-400 mb-8">
               Share your questions, thoughts, or ideas—we're here to help and ready to listen.
             </p>
 
             {status === 'SUCCESS' ? (
               <div className="text-center py-12">
-                <div className="w-16 h-16 bg-[#14b5bc] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md animate-bounce">
+                <div className="w-16 h-16 bg-[#6366f1] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md animate-bounce">
                   <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">Submission Successful</h3>
-                <p className="text-neutral-500 dark:text-neutral-400">Our strategic team will contact you shortly.</p>
+                <h3 className="text-2xl font-bold mb-4 text-white">Submission Successful</h3>
+                <p className="text-neutral-400">Our strategic team will contact you shortly.</p>
                 <button
                   onClick={() => setStatus('IDLE')}
-                  className="mt-8 px-6 py-2 bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black rounded-lg font-semibold transition-colors"
+                  className="mt-8 px-6 py-2 bg-white hover:bg-neutral-200 text-black rounded-lg font-semibold transition-colors"
                 >
                   Send another message
                 </button>
@@ -148,73 +148,73 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-500 dark:text-neutral-400">Name</label>
+                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-400">Name</label>
                     <input
                       type="text"
                       name="userName"
                       required
                       value={formData.userName}
                       onChange={handleChange}
-                      className="w-full bg-neutral-50 dark:bg-neutral-950/30 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b5bc] dark:focus:border-[#14b5bc] transition-colors text-black dark:text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-500 dark:text-neutral-400">Company</label>
+                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-400">Company</label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full bg-neutral-50 dark:bg-neutral-950/30 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b5bc] dark:focus:border-[#14b5bc] transition-colors text-black dark:text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-500 dark:text-neutral-400">Email</label>
+                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-400">Email</label>
                     <input
                       type="email"
                       name="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-neutral-50 dark:bg-neutral-950/30 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b5bc] dark:focus:border-[#14b5bc] transition-colors text-black dark:text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-500 dark:text-neutral-400">Phone Number</label>
+                    <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-400">Phone Number</label>
                     <input
                       type="tel"
                       name="phoneNumber"
                       value={formData.phoneNumber}
                       onChange={handleChange}
-                      className="w-full bg-neutral-50 dark:bg-neutral-950/30 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b5bc] dark:focus:border-[#14b5bc] transition-colors text-black dark:text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-500 dark:text-neutral-400">Subject</label>
+                  <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-400">Subject</label>
                   <input
                     type="text"
                     name="subject"
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full bg-neutral-50 dark:bg-neutral-950/30 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b5bc] dark:focus:border-[#14b5bc] transition-colors text-black dark:text-white placeholder-neutral-400"
+                    className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-500 dark:text-neutral-400">Messages</label>
+                  <label className="block text-xs font-bold tracking-wider uppercase mb-2 text-neutral-400">Messages</label>
                   <textarea
                     name="message"
                     required
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full bg-neutral-50 dark:bg-neutral-950/30 border border-neutral-200 dark:border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b5bc] dark:focus:border-[#14b5bc] transition-colors text-black dark:text-white placeholder-neutral-400 resize-none"
+                    className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400 resize-none"
                   />
                 </div>
 
@@ -226,8 +226,8 @@ export default function Contact() {
                   type="submit"
                   disabled={status === 'TRANSMITTING'}
                   className={`w-full py-4 px-8 rounded-xl font-bold transition-all shadow-md ${status === 'TRANSMITTING'
-                      ? 'bg-neutral-400 cursor-not-allowed text-white'
-                      : 'bg-black hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-black'
+                      ? 'bg-neutral-850 cursor-not-allowed text-neutral-500'
+                      : 'bg-white hover:bg-neutral-200 text-black'
                     }`}
                 >
                   {status === 'TRANSMITTING' ? 'Submitting...' : 'Submit'}
@@ -241,7 +241,7 @@ export default function Contact() {
       <Dialog isOpen={isOpen} onClose={closeModal}>
         {status === 'SUCCESS' ? (
           <div className="text-center py-12">
-            <div className="w-16 h-16 bg-[#14b5bc] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+            <div className="w-16 h-16 bg-[#6366f1] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
               <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
               </svg>
@@ -262,7 +262,7 @@ export default function Contact() {
                   required
                   value={formData.userName}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-neutral-200 dark:border-neutral-800 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+                  className="w-full bg-transparent border-b border-neutral-800 py-3 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
               <div>
@@ -273,7 +273,7 @@ export default function Contact() {
                   required
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-neutral-200 dark:border-neutral-800 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+                  className="w-full bg-transparent border-b border-neutral-800 py-3 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
               <div>
@@ -284,7 +284,7 @@ export default function Contact() {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full bg-transparent border-b border-neutral-200 dark:border-neutral-800 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+                  className="w-full bg-transparent border-b border-neutral-800 py-3 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
               <div>
@@ -295,7 +295,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full bg-transparent border-b border-neutral-200 dark:border-neutral-800 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
+                  className="w-full bg-transparent border-b border-neutral-800 py-3 focus:outline-none focus:border-white transition-colors resize-none"
                 />
               </div>
 

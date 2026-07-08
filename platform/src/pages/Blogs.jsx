@@ -18,9 +18,9 @@ export default function Blogs() {
         >
           <Link
             to={`/blogs/${blog.slug}`}
-            className="group h-full flex flex-col bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
+            className="group h-full flex flex-col bg-neutral-950 border border-neutral-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
           >
-            <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+            <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-900">
               <img
                 src={blog.thumbnail}
                 alt={blog.title}
@@ -33,21 +33,21 @@ export default function Blogs() {
             </div>
 
             <div className="flex flex-col flex-grow p-7">
-              <div className="flex items-center gap-4 text-xs text-neutral-400 dark:text-neutral-500 font-medium mb-4">
+              <div className="flex items-center gap-4 text-xs text-neutral-500 font-medium mb-4">
                 <span>{blog.date}</span>
-                <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                <span className="w-1 h-1 rounded-full bg-neutral-700" />
                 <span>{blog.readTime}</span>
               </div>
 
-              <h2 className="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 leading-snug mb-3 group-hover:text-black dark:group-hover:text-white transition-colors duration-300 line-clamp-2">
+              <h2 className="text-xl font-bold tracking-tight text-neutral-100 leading-snug mb-3 group-hover:text-white transition-colors duration-300 line-clamp-2">
                 {blog.title}
               </h2>
 
-              <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-light flex-grow line-clamp-3">
+              <p className="text-sm text-neutral-400 leading-relaxed font-light flex-grow line-clamp-3">
                 {blog.excerpt}
               </p>
 
-              <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase mt-6 text-black dark:text-white">
+              <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase mt-6 text-white">
                 Read Article{' '}
                 <ArrowIcon size={13} />
               </span>
@@ -66,10 +66,10 @@ export default function Blogs() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-black dark:text-white mb-4">
+        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-white mb-4">
           Blogs
         </h1>
-        <p className="text-xl md:text-2xl text-black dark:text-neutral-300 font-light leading-relaxed mb-16 max-w-xl">
+        <p className="text-xl md:text-2xl text-neutral-300 font-light leading-relaxed mb-16 max-w-xl">
           Perspectives on D2C growth, profitability, and commerce strategy from the AscentDelta team.
         </p>
       </motion.div>

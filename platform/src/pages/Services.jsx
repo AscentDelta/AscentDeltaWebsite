@@ -55,7 +55,7 @@ export default function Services() {
           transition={{ delay: i * 0.05 }}
           className="flex items-start gap-3 text-sm font-medium"
         >
-          <div className="w-1.5 h-1.5 bg-black dark:bg-white rounded-full flex-shrink-0 mt-2" />
+          <div className="w-1.5 h-1.5 bg-white rounded-full flex-shrink-0 mt-2" />
           <span className="leading-tight">{features[i]}</span>
         </motion.li>
       );
@@ -70,10 +70,10 @@ export default function Services() {
       items.push(
         <div 
           key={i}
-          className={`relative p-8 mb-6 border border-neutral-200 dark:border-neutral-800 rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden ${
+          className={`relative p-8 mb-6 border border-neutral-800 rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden ${
             isActive 
-              ? 'bg-neutral-50/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-xl scale-[1.02]' 
-              : 'bg-transparent hover:bg-neutral-50/40 dark:hover:bg-neutral-900/40 opacity-60 hover:opacity-100'
+              ? 'bg-neutral-900/80 backdrop-blur-xl shadow-xl scale-[1.02]' 
+              : 'bg-transparent hover:bg-neutral-900/40 opacity-60 hover:opacity-100'
           }`}
           onMouseEnter={() => {
             setActiveImage(services[i].img);
@@ -87,7 +87,7 @@ export default function Services() {
           }}
         >
           <div className="relative z-10 flex flex-col gap-4">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter text-black dark:text-white">{services[i].title}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter text-white">{services[i].title}</h2>
             
             <AnimatePresence initial={false}>
               {isActive && (
@@ -105,7 +105,7 @@ export default function Services() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-lg border-b border-neutral-200 dark:border-neutral-800 pb-6">
+                  <p className="text-neutral-400 mb-8 leading-relaxed text-lg border-b border-neutral-800 pb-6">
                     {services[i].desc}
                   </p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
@@ -124,8 +124,8 @@ export default function Services() {
   return (
     <div className="w-full max-w-7xl mx-auto px-6 py-24 relative min-h-screen">
       <div className="mb-16">
-        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-black dark:text-white">Our Capabilities</h1>
-        <p className="text-xl md:text-2xl text-black dark:text-neutral-300 font-light leading-relaxed mt-6 max-w-xl">High-performance operating lanes designed to launch, scale, and dominate across the digital commerce landscape.</p>
+        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-white">Our Capabilities</h1>
+        <p className="text-xl md:text-2xl text-neutral-300 font-light leading-relaxed mt-6 max-w-xl">High-performance operating lanes designed to launch, scale, and dominate across the digital commerce landscape.</p>
       </div>
       
       <div className="flex flex-col lg:flex-row gap-16 relative items-start">
@@ -133,7 +133,7 @@ export default function Services() {
           {renderServices()}
         </div>
         
-        <div className="hidden lg:block w-1/2 sticky top-32 h-[75vh] rounded-[2rem] overflow-hidden bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-2xl">
+        <div className="hidden lg:block w-1/2 sticky top-32 h-[75vh] rounded-[2rem] overflow-hidden bg-neutral-900 border border-neutral-800 shadow-2xl">
           <AnimatePresence>
             <motion.img
               key={activeImage}
@@ -146,7 +146,7 @@ export default function Services() {
               alt="Service Preview"
             />
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-black/40 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         </div>
       </div>
     </div>

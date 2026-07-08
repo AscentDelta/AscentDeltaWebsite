@@ -1,4 +1,4 @@
-export default function ArrowIcon({ size = 14, className = '', color = '#14b5bc' }) {
+export default function ArrowIcon({ size = 14, className = '', color = '#6366f1' }) {
   return (
     <svg
       width={size}

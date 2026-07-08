@@ -1,5 +1,3 @@
-import { useTheme } from '../../context/ThemeContext';
-
 const brands = [
   { name: 'Avon',         img: '/brand-screenshots/avon.png',     logo: '/Client Logos/Coloured/Avon-Logo.png' },
   { name: "Levi's",       img: '/brand-screenshots/levis.png',    logo: '/Client Logos/Coloured/Levis.png' },
@@ -17,13 +15,12 @@ const brands = [
 
 const allBrands = [...brands, ...brands];
 
-function PhoneFrame({ brand, labelBottom, overlayColor, theme }) {
+function PhoneFrame({ brand, labelBottom, overlayColor }) {
   const label = (
-    <p className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#14b5bc' }}>
+    <p className="text-sm font-semibold tracking-widest uppercase text-[#6366f1]">
       {brand.name}
     </p>
   );
-
 
   return (
     <div className="flex flex-col items-center gap-3 flex-shrink-0">
@@ -35,9 +32,7 @@ function PhoneFrame({ brand, labelBottom, overlayColor, theme }) {
           width: '190px',
           height: '400px',
           borderRadius: '38px',
-          background: theme === 'dark'
-            ? 'linear-gradient(160deg, #d4d4d8 0%, #a1a1aa 50%, #d4d4d8 100%)'
-            : 'linear-gradient(160deg, #3a3a3a 0%, #1a1a1a 50%, #3a3a3a 100%)',
+          background: 'linear-gradient(160deg, #d4d4d8 0%, #a1a1aa 50%, #d4d4d8 100%)',
           padding: '3px',
           boxShadow: '0 25px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 4px rgba(0,0,0,0.2)',
           position: 'relative',
@@ -45,13 +40,13 @@ function PhoneFrame({ brand, labelBottom, overlayColor, theme }) {
         }}
       >
         {/* Volume up */}
-        <div style={{ position: 'absolute', left: '-3px', top: '72px', width: '3px', height: '26px', background: theme === 'dark' ? 'linear-gradient(180deg,#b0b0b8,#8e8e96)' : 'linear-gradient(180deg,#2a2a2a,#111)', borderRadius: '3px 0 0 3px' }} />
+        <div style={{ position: 'absolute', left: '-3px', top: '72px', width: '3px', height: '26px', background: 'linear-gradient(180deg,#b0b0b8,#8e8e96)', borderRadius: '3px 0 0 3px' }} />
         {/* Volume down */}
-        <div style={{ position: 'absolute', left: '-3px', top: '106px', width: '3px', height: '26px', background: theme === 'dark' ? 'linear-gradient(180deg,#b0b0b8,#8e8e96)' : 'linear-gradient(180deg,#2a2a2a,#111)', borderRadius: '3px 0 0 3px' }} />
+        <div style={{ position: 'absolute', left: '-3px', top: '106px', width: '3px', height: '26px', background: 'linear-gradient(180deg,#b0b0b8,#8e8e96)', borderRadius: '3px 0 0 3px' }} />
         {/* Mute toggle */}
-        <div style={{ position: 'absolute', left: '-3px', top: '50px', width: '3px', height: '16px', background: theme === 'dark' ? 'linear-gradient(180deg,#b0b0b8,#8e8e96)' : 'linear-gradient(180deg,#2a2a2a,#111)', borderRadius: '3px 0 0 3px' }} />
+        <div style={{ position: 'absolute', left: '-3px', top: '50px', width: '3px', height: '16px', background: 'linear-gradient(180deg,#b0b0b8,#8e8e96)', borderRadius: '3px 0 0 3px' }} />
         {/* Power button */}
-        <div style={{ position: 'absolute', right: '-3px', top: '90px', width: '3px', height: '40px', background: theme === 'dark' ? 'linear-gradient(180deg,#b0b0b8,#8e8e96)' : 'linear-gradient(180deg,#2a2a2a,#111)', borderRadius: '0 3px 3px 0' }} />
+        <div style={{ position: 'absolute', right: '-3px', top: '90px', width: '3px', height: '40px', background: 'linear-gradient(180deg,#b0b0b8,#8e8e96)', borderRadius: '0 3px 3px 0' }} />
 
         {/* Screen */}
         <div
@@ -111,8 +106,7 @@ function PhoneFrame({ brand, labelBottom, overlayColor, theme }) {
 }
 
 export default function BrandPhoneMarquee() {
-  const { theme } = useTheme();
-  const overlayColor = theme === 'dark' ? 'rgba(0,0,0,0.80)' : 'rgba(255,255,255,0.80)';
+  const overlayColor = 'rgba(0,0,0,0.80)';
 
   return (
     <div className="overflow-hidden w-full py-4">
@@ -129,7 +123,7 @@ export default function BrandPhoneMarquee() {
       <div className="flex w-max animate-phone-scroll gap-10 px-8 items-start">
         {allBrands.map((brand, i) => (
           <div key={i} style={{ marginTop: i % 2 === 0 ? '0px' : '60px' }}>
-            <PhoneFrame brand={brand} labelBottom={i % 2 === 0} overlayColor={overlayColor} theme={theme} />
+            <PhoneFrame brand={brand} labelBottom={i % 2 === 0} overlayColor={overlayColor} />
           </div>
         ))}
       </div>

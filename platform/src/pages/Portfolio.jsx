@@ -21,7 +21,7 @@ const lastRowColStart = ['lg:col-start-1', 'lg:col-start-3', 'lg:col-start-5'];
 
 function getTileClasses(index, total) {
   const base =
-    'group relative overflow-hidden rounded-2xl aspect-square bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors duration-300 cursor-pointer';
+    'group relative overflow-hidden rounded-2xl aspect-square bg-neutral-950 border border-neutral-800 hover:border-neutral-600 transition-colors duration-300 cursor-pointer';
   const lastRowStart = total - (total % 5 || 5);
   if (index >= lastRowStart && total % 5 !== 0) {
     const posInRow = index - lastRowStart;
@@ -44,10 +44,10 @@ export default function Portfolio() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-black dark:text-white mb-4">
+        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] text-white mb-4">
           Portfolio
         </h1>
-        <p className="text-xl md:text-2xl text-black dark:text-neutral-300 font-light leading-relaxed mb-16 max-w-xl">
+        <p className="text-xl md:text-2xl text-neutral-300 font-light leading-relaxed mb-16 max-w-xl">
           {clients.length} brands. One shared goal — profitable, scalable growth.
         </p>
       </motion.div>
@@ -76,15 +76,15 @@ export default function Portfolio() {
               </div>
 
               {/* Detail overlay — slides up from bottom on hover or tap */}
-              <div className={`absolute inset-0 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 transition-transform duration-500 ease-out flex flex-col justify-end p-5 rounded-2xl group-hover:translate-y-0 ${isActive ? 'translate-y-0' : 'translate-y-full'}`}>
-                <span className="text-[10px] font-bold tracking-widest uppercase text-[#14b5bc] mb-2">
+              <div className={`absolute inset-0 bg-neutral-900 border border-neutral-700 transition-transform duration-500 ease-out flex flex-col justify-end p-5 rounded-2xl group-hover:translate-y-0 ${isActive ? 'translate-y-0' : 'translate-y-full'}`}>
+                <span className="text-[10px] font-bold tracking-widest uppercase text-[#6366f1] mb-2">
                   {client.category}
                 </span>
-                <h3 className="text-lg font-black text-black dark:text-white leading-tight mb-1">
+                <h3 className="text-lg font-black text-white leading-tight mb-1">
                   {client.metric}
                 </h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{client.channel}</p>
-                <div className="mt-4 pt-3 border-t border-neutral-200 dark:border-neutral-700">
+                <div className="mt-4 pt-3 border-t border-neutral-700">
                   <p className="text-xs text-neutral-400 dark:text-neutral-500 font-semibold tracking-wide">
                     {client.brand}
                   </p>
