@@ -31,7 +31,7 @@ export default function Navbar() {
             <img
               src={theme === 'dark' ? '/logo-white.png' : '/logo-black.png'}
               alt="AscentDelta"
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 
