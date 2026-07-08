@@ -3,11 +3,11 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@media (pointer: fine) {
+/* @media (pointer: fine) {
   *, *::before, *::after {
     cursor: none !important;
   }
-}
+} */
 
 @layer base {
   body {
