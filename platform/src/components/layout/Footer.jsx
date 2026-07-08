@@ -156,7 +156,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </span>
-              <span>AscentDelta, Ambala-Chandigarh Road,<br />Chandigarh, Zirakpur, Punjab 140603</span>
+              <span>AscentDelta, Ambala-Chandigarh Road, Chandigarh, Zirakpur, Punjab 140603</span>
             </a>
           </div>
         </div>
