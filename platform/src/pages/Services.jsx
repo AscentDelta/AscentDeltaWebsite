@@ -37,9 +37,9 @@ export default function Services() {
       img: "creative & content.png"
     },
     {
-      title: "Warehouse & Distribution",
-      desc: "End-to-end management across warehouse, operations, and delivery.",
-      features: ["Infrastructure & inventory support", "Operations & workforce support", "Quality control & replenishment", "Delivery management"],
+      title: "SEO & Organic Growth",
+      desc: "Search visibility strategies that increase qualified traffic, SERP share, and brand discovery.",
+      features: ["Keyword research & content strategy", "Technical SEO audits", "On-page optimization", "Organic ranking improvement"],
       img: "warehouse.png"
     }
   ];

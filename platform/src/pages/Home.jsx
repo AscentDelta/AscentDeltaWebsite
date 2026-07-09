@@ -85,8 +85,8 @@ export default function Home() {
       img: "creative & content.png"
     },
     {
-      title: "Warehouse & Distribution",
-      desc: "End-to-end management across warehouse, operations, and delivery.",
+      title: "SEO & Organic Growth",
+      desc: "Search visibility strategies that increase qualified traffic, SERP share, and brand discovery.",
       img: "warehouse.png"
     }
   ];
