@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Marquee from '../components/ui/Marquee';
-import BrandPhoneMarquee from '../components/ui/BrandPhoneMarquee';
+import BrandDesktopMarquee from '../components/ui/BrandDesktopMarquee';
 import ArrowIcon from '../components/ui/ArrowIcon';
 import Button from '../components/ui/Button';
 
@@ -205,7 +205,7 @@ export default function Home() {
             <span style={{color: '#6366f1'}}>We scale them.</span>
           </h2>
         </div>
-        <BrandPhoneMarquee />
+        <BrandDesktopMarquee />
       </section>
 
       <section className="py-24 max-w-7xl mx-auto px-6 w-full relative z-10">

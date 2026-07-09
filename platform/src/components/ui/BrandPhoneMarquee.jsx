@@ -1,16 +1,22 @@
 const brands = [
-  { name: 'Avon',         img: '/brand-screenshots/avon.png',     logo: '/Client Logos/Coloured/Avon-Logo.png' },
-  { name: "Levi's",       img: '/brand-screenshots/levis.png',    logo: '/Client Logos/Coloured/Levis.png' },
-  { name: 'The Moms Co',  img: '/brand-screenshots/momco.png',    logo: '/Client Logos/Coloured/TheMomsCo-logo.png', logoSize: '145px' },
-  { name: 'Bikaji',       img: '/brand-screenshots/bikaji.png',   logo: '/Client Logos/Coloured/bikaji.png' },
-  { name: 'Enamor',       img: '/brand-screenshots/enamor.png',   logo: '/Client Logos/Coloured/Enamor.png' },
-  { name: 'Crax',         img: '/brand-screenshots/crax.png',     logo: '/Client Logos/Coloured/crax_logo.png' },
-  { name: 'Durex',        img: '/brand-screenshots/durex.png',    logo: '/Client Logos/Coloured/Durex/Durex-Logo-5.png' },
-  { name: 'Colgate',      img: '/brand-screenshots/colgate.png',  logo: '/Client Logos/Coloured/colgate.png' },
-  { name: 'Nxtface',      img: '/brand-screenshots/nxtface.png',  logo: '/Client Logos/Coloured/black-logo.png', whiteBorder: true, logoSize: '145px' },
-  { name: 'Color Pencil', img: '/brand-screenshots/cp.png',       logo: '/Client Logos/Coloured/CP logo.png', logoSize: '145px' },
-  { name: 'Ryze',         img: '/brand-screenshots/ryze.png',     logo: '/Client Logos/Coloured/Ryze.png' },
-  { name: 'Neuro',        img: '/brand-screenshots/neuro.png',    logo: '/Client Logos/Coloured/Neuro logo.png' },
+  {
+    name: 'The Ambience Hotel',
+    img: '/brand-screenshots/theambiencehotel-desktop.png',
+    logo: '/Client Logos/Coloured/ambiencelogo.png',
+    logoSize: '110px',
+  },
+  {
+    name: 'Samarpan',
+    img: '/brand-screenshots/samarpan-desktop.png',
+    logo: '/Client Logos/Coloured/samarpanlogo.jpg',
+    logoSize: '110px',
+  },
+  {
+    name: 'Upharkaro',
+    img: '/brand-screenshots/upharkaro-desktop.png',
+    logo: '/Client Logos/Coloured/upharkarologo.png',
+    logoSize: '110px',
+  },
 ];
 
 const allBrands = [...brands, ...brands];

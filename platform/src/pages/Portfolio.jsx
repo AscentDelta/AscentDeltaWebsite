@@ -2,19 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const clients = [
-  { logo: 'Durex/Durex-Logo-5.png', brand: 'Durex',       category: 'Sexual Wellness',   metric: 'Digital Presence',        channel: 'Performance Marketing' },
-  { logo: 'Levis.png',              brand: "Levi's",       category: 'Fashion',           metric: 'Omnichannel Growth',      channel: 'Digital Integration'   },
-  { logo: 'colgate.png',            brand: 'Colgate',      category: 'Oral Care',         metric: 'Marketplace Reach',       channel: 'Multi-Platform'        },
-  { logo: 'TheMomsCo-logo.png',     brand: 'The Moms Co',  category: 'Baby & Mom Care',   metric: 'Acquisition Efficiency',  channel: 'Content Strategy'      },
-  { logo: 'Avon-Logo.png',          brand: 'Avon',         category: 'Beauty',            metric: 'DTC Scale Up',            channel: 'Performance & CRO'     },
-  { logo: 'Enamor.png',             brand: 'Enamor',       category: 'Lingerie',          metric: 'Premium Positioning',     channel: 'Brand Strategy'        },
-  { logo: 'Ryze.png',               brand: 'Ryze',         category: 'Wellness',          metric: 'D2C Growth',              channel: 'Performance Marketing' },
-  { logo: 'bikaji.png',             brand: 'Bikaji',       category: 'Snacks & Foods',    metric: 'Market Expansion',        channel: 'Digital Commerce'      },
-  { logo: 'Neuro logo.png',         brand: 'Neuro',        category: 'Wellness',          metric: 'Subscription Growth',     channel: 'Retention',            logoSize: 'max-h-10' },
-  { logo: 'crax_logo.png',          brand: 'Crax',         category: 'Snacks',            metric: 'Quick Commerce Scale',    channel: 'Q-Comm'                },
-  { logo: 'dixcy-scott-logo.png',   brand: 'Dixcy Scott',  category: 'Innerwear',         metric: 'Digital Revenue',         channel: 'Digital Integration'   },
-  { logo: 'CP logo.png',            brand: 'CP',           category: 'Education',         metric: 'Online Sales Growth',     channel: 'Marketplace Strategy',  logoSize: 'max-h-20' },
-  { logo: 'black-logo.png',         brand: 'Nxtface',      category: 'Skincare',          metric: 'Revenue Growth',          channel: 'Performance Marketing', darkInvert: true },
+  { logo: 'ambiencelogo.png',  brand: 'The Ambience Hotel', category: 'Hospitality', metric: 'Digital Transformation', channel: 'Brand Experience' },
+  { logo: 'samarpanlogo.jpg',  brand: 'Samarpan',            category: 'Retail',      metric: 'Ecommerce Growth',       channel: 'Conversion Strategy' },
+  { logo: 'upharkarologo.png', brand: 'Upharkaro',           category: 'Mobility',    metric: 'Marketplace Scale',      channel: 'Digital Commerce' },
 ];
 
 const lastRowColStart = ['lg:col-start-1', 'lg:col-start-3', 'lg:col-start-5'];
