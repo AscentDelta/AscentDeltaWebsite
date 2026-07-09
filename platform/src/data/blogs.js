@@ -163,7 +163,7 @@ export const blogs = [
           'COD eligibility rules',
           'Address validation tools',
           'WhatsApp order confirmation',
-          'Regional warehousing strategy',
+          'SEO strategy',
           'Smarter courier allocation',
         ],
       },

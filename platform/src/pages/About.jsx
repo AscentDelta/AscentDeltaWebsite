@@ -4,7 +4,7 @@ export default function About() {
   const timeline = [
     {
       heading: "How We Started",
-      text: "Founded by the team behind Bombay Shaving Company and Bombae, AscentDelta was incepted to help investor brands accelerate online revenue with precision. With over 50 years of combined experience, we manage 10+ DTC stores across diverse sectors with powerful in-house digital tools and content.",
+      text: "AscentDelta was created by operators with deep DTC experience to help investor brands accelerate profitable online growth. We combine hands-on commerce execution with strong digital operating systems to run high-impact revenue engines.",
       img: "1.png",
       span: "md:col-span-2",
       layout: "flex-col lg:flex-row"
@@ -18,7 +18,7 @@ export default function About() {
     },
     {
       heading: "Quietly Building Giants",
-      text: "The team behind AscentDelta has been quietly helping us cumulatively generate colossal numbers.",
+      text: "The team behind AscentDelta has been quietly helping brands grow more efficiently and sustainably.",
       img: "3.png",
       span: "col-span-1",
       layout: "flex-col-reverse"
@@ -72,7 +72,7 @@ export default function About() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800 rounded-2xl overflow-hidden mb-16">
         {[
           { value: '2021', label: 'Founded' },
-          { value: '14+', label: 'Brands Scaled' },
+          { value: '3', label: 'Brands Scaled' },
           { value: '5+', label: 'Years of Expertise' },
           { value: '100%', label: 'Execution Focus' },
         ].map((stat) => (

@@ -161,10 +161,10 @@ export default function Home() {
 
             <div className="mt-3 pt-3 border-t border-neutral-800 grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-2xl">
               {[
-                { value: '14+', label: 'Brands Scaled' },
+                { value: '3', label: 'Brands Scaled' },
                 { value: '5', label: 'Growth Levers' },
                 { value: '100', label: 'Days to Impact' },
-                { value: '₹500Cr+', label: 'Revenue Influenced' },
+                { value: 'High', label: 'Business Impact' },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="text-3xl md:text-4xl font-bold text-white tracking-tight">{stat.value}</p>
