@@ -87,19 +87,6 @@ export default function About() {
         {renderTimeline()}
       </div>
  
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-800 border border-neutral-800 rounded-2xl overflow-hidden mt-16">
-        {[
-          { value: '₹1000 Cr', label: 'GMV on QComm' },
-          { value: '12 Cr', label: 'Annual D2C Visitors' },
-          { value: '50 Cr', label: 'Annual Reach' },
-          { value: '60L', label: 'Annual Shipments' },
-        ].map((stat) => (
-          <div key={stat.label} className="bg-black px-8 py-8 flex flex-col gap-1">
-            <p className="text-3xl md:text-4xl font-bold tracking-tight text-white">{stat.value}</p>
-            <p className="text-sm text-neutral-400 font-medium">{stat.label}</p>
-          </div>
-        ))}
-      </div>
       <div className="mt-16 rounded-2xl overflow-hidden border border-neutral-800 bg-black">
         <div className="px-8 py-6 border-b border-neutral-800">
           <h2 className="text-lg font-bold text-white">Why choose us?</h2>
