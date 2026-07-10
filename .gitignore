@@ -21,3 +21,7 @@ npm-debug.log*
 # Agent/IDE local configs
 .claude/
 
+# Client presentations — local only, never push to GitHub
+*.pptx
+.deck-build/
+
