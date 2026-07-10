@@ -40,7 +40,7 @@ export default function Services() {
       title: "SEO & Organic Growth",
       desc: "Search visibility strategies that increase qualified traffic, SERP share, and brand discovery.",
       features: ["Keyword research & content strategy", "Technical SEO audits", "On-page optimization", "Organic ranking improvement"],
-      img: "warehouse.png"
+      img: "seo organic growth.png"
     }
   ];
 

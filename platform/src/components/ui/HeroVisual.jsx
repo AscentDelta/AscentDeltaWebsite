@@ -24,8 +24,8 @@ export default function HeroVisual() {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0x111111,
-          backgroundColor: 0x000000,
+          color: 0x0d1e2a,
+          backgroundColor: 0x02070b,
           shininess: 30.00,
           waveHeight: 18.00,
           waveSpeed: 0.50,
@@ -86,7 +86,7 @@ export default function HeroVisual() {
           <div
             className="absolute inset-0 w-full h-full"
             style={{
-              background: 'radial-gradient(ellipse 80% 60% at 50% 0%, #1a1a1a 0%, #000 60%)',
+              background: 'radial-gradient(ellipse 80% 60% at 50% 0%, #0d1e2a 0%, #02070b 60%)',
             }}
           />
         )}

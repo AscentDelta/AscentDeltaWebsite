@@ -45,7 +45,7 @@ function renderBlock(block, index) {
       return (
         <div
           key={index}
-          className="my-6 border-l-4 border-[#6366f1] bg-neutral-900 rounded-r-xl px-6 py-4"
+          className="my-6 border-l-4 border-[#14b8ab] bg-neutral-900 rounded-r-xl px-6 py-4"
         >
           <p className="text-base font-medium text-neutral-200 leading-relaxed">
             {block.text}
@@ -60,7 +60,7 @@ function renderBlock(block, index) {
               key={j}
               className="flex items-start gap-3 text-base text-neutral-400"
             >
-              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#6366f1] flex-shrink-0" />
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#14b8ab] flex-shrink-0" />
               <span className="leading-relaxed">{item}</span>
             </li>
           ))}
@@ -159,7 +159,7 @@ export default function BlogPost() {
             Ready to Apply This?
           </p>
           <h3 className="text-2xl font-black tracking-tight mb-4">
-            Build Your <span style={{color: '#6366f1'}}>AscentDelta</span> Plan
+            Build Your <span style={{color: '#14b8ab'}}>AscentDelta</span> Plan
           </h3>
           <p className="text-neutral-400 text-sm mb-6 max-w-md mx-auto">
             Let's audit your D2C business and engineer a path to profitability — in 100 days.

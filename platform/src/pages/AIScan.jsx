@@ -171,8 +171,8 @@ export default function AIScan() {
     <div className="w-full max-w-5xl mx-auto px-6 py-24">
       {/* Header */}
       <div className="mb-14">
-        <div className="inline-flex items-center gap-2 bg-[#6366f1]/10 text-[#6366f1] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-          <span className="w-2 h-2 bg-[#6366f1] rounded-full animate-pulse" />
+        <div className="inline-flex items-center gap-2 bg-[#14b8ab]/10 text-[#14b8ab] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+          <span className="w-2 h-2 bg-[#14b8ab] rounded-full animate-pulse" />
           AI-Powered
         </div>
         <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.05] text-white">
@@ -194,7 +194,7 @@ export default function AIScan() {
               onChange={e => setUrl(e.target.value)}
               placeholder="https://yourstore.com"
               disabled={scanning}
-              className="w-full bg-neutral-800 border border-transparent focus:border-[#6366f1] rounded-xl px-4 py-3.5 text-base text-white placeholder-neutral-400 outline-none transition-colors"
+              className="w-full bg-neutral-800 border border-transparent focus:border-[#14b8ab] rounded-xl px-4 py-3.5 text-base text-white placeholder-neutral-400 outline-none transition-colors"
             />
           </div>
           <div>
@@ -205,7 +205,7 @@ export default function AIScan() {
               onChange={e => setEmail(e.target.value)}
               placeholder="you@brand.com"
               disabled={scanning}
-              className="w-full bg-neutral-800 border border-transparent focus:border-[#6366f1] rounded-xl px-4 py-3.5 text-base text-white placeholder-neutral-400 outline-none transition-colors"
+              className="w-full bg-neutral-800 border border-transparent focus:border-[#14b8ab] rounded-xl px-4 py-3.5 text-base text-white placeholder-neutral-400 outline-none transition-colors"
             />
           </div>
         </div>
@@ -215,7 +215,7 @@ export default function AIScan() {
           onClick={startScan}
           disabled={scanning}
           className="w-full font-bold text-base py-4 rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed text-white"
-          style={{ background: '#6366f1' }}
+          style={{ background: '#14b8ab' }}
         >
           {scanning ? 'Scanning…' : 'Run Deep Scan →'}
         </button>
@@ -233,7 +233,7 @@ export default function AIScan() {
             className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 mb-10"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-3 h-3 bg-[#6366f1] rounded-full animate-pulse" />
+              <div className="w-3 h-3 bg-[#14b8ab] rounded-full animate-pulse" />
               <span className="font-bold text-white">Deep scan in progress…</span>
             </div>
             <div className="space-y-3">
@@ -251,7 +251,7 @@ export default function AIScan() {
             </div>
             <div className="mt-6 h-1.5 bg-neutral-800 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-[#6366f1] rounded-full"
+                className="h-full bg-[#14b8ab] rounded-full"
                 animate={{ width: `${((stepIndex + 1) / SCAN_STEPS.length) * 100}%` }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
               />
@@ -281,10 +281,10 @@ export default function AIScan() {
             >
               {/* Icon */}
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-                style={{ background: 'rgba(99,102,241,0.12)' }}>
+                style={{ background: 'rgba(20,184,171,0.12)' }}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
                   <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    stroke="#14b8ab" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
 
@@ -298,7 +298,7 @@ export default function AIScan() {
               <button
                 onClick={() => setError('')}
                 className="w-full font-bold text-sm py-3.5 rounded-xl text-white hover:opacity-90 transition-opacity"
-                style={{ background: '#6366f1' }}
+                style={{ background: '#14b8ab' }}
               >
                 Got it, I'll try again
               </button>
@@ -324,7 +324,7 @@ export default function AIScan() {
               <button
                 onClick={downloadPDF}
                 className="flex items-center gap-2 text-white text-sm font-bold px-5 py-3 rounded-xl hover:opacity-80 transition-opacity"
-                style={{ background: '#6366f1' }}
+                style={{ background: '#14b8ab' }}
               >
                 ↓ Download / Print
               </button>
@@ -335,7 +335,7 @@ export default function AIScan() {
               <div className="bg-black border border-transparent rounded-3xl p-8 mb-6 flex flex-col md:flex-row items-center gap-8">
                 <ScoreRing score={report.ai.overallScore} size={120} />
                 <div className="flex-1">
-                  <div className="text-[#6366f1] text-xs font-bold uppercase tracking-widest mb-2">Overall Score · Grade {report.ai.grade}</div>
+                  <div className="text-[#14b8ab] text-xs font-bold uppercase tracking-widest mb-2">Overall Score · Grade {report.ai.grade}</div>
                   <p className="text-white text-lg leading-relaxed">{report.ai.summary}</p>
                 </div>
               </div>
@@ -369,11 +369,11 @@ export default function AIScan() {
                 <div className="space-y-3">
                   {(report.ai.topPriorities || []).map(p => (
                     <div key={p.priority} className="flex items-start gap-4 bg-white/5 border border-transparent rounded-xl px-5 py-4">
-                      <span className="text-[#6366f1] font-black text-lg flex-shrink-0">#{p.priority}</span>
+                      <span className="text-[#14b8ab] font-black text-lg flex-shrink-0">#{p.priority}</span>
                       <div className="flex-1 min-w-0">
                         <div className="text-white font-semibold text-sm">{p.action}</div>
                         <div className="flex gap-3 mt-1">
-                          <span className="text-xs text-neutral-500">Impact: <span className="text-[#6366f1] font-bold">{p.impact}</span></span>
+                          <span className="text-xs text-neutral-500">Impact: <span className="text-[#14b8ab] font-bold">{p.impact}</span></span>
                           <span className="text-xs text-neutral-500">Effort: <span className="text-neutral-300 font-bold">{p.effort}</span></span>
                           <span className="text-xs text-neutral-500">{p.timeframe}</span>
                         </div>
@@ -394,7 +394,7 @@ export default function AIScan() {
 
               {/* Footer */}
               <div className="mt-8 text-center text-xs text-neutral-400">
-                Report generated by <span className="text-[#6366f1] font-bold">AscentDelta AI Scan</span>
+                Report generated by <span className="text-[#14b8ab] font-bold">AscentDelta AI Scan</span>
               </div>
             </div>
           </motion.div>

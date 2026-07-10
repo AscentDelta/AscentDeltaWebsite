@@ -23,7 +23,7 @@ const allBrands = [...brands, ...brands];
 
 function PhoneFrame({ brand, labelBottom, overlayColor }) {
   const label = (
-    <p className="text-sm font-semibold tracking-widest uppercase text-[#6366f1]">
+    <p className="text-sm font-semibold tracking-widest uppercase text-[#14b8ab]">
       {brand.name}
     </p>
   );

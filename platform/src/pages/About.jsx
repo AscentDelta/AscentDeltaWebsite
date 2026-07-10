@@ -39,7 +39,7 @@ export default function About() {
         >
           <div className="flex-1 flex flex-col justify-center">
             {timeline[i].heading && (
-              <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{color: '#6366f1'}}>{timeline[i].heading}</p>
+              <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{color: '#14b8ab'}}>{timeline[i].heading}</p>
             )}
             <p className="text-xl md:text-2xl leading-relaxed text-neutral-400 font-medium">
               {timeline[i].text}

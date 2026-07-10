@@ -30,9 +30,9 @@ const brands = [
     logo: '/Client Logos/Coloured/upharkarologo.png',
     logoSize: '98px',
     theme: {
-      accent: '#6366f1', // Indigo
-      badgeBg: 'rgba(99, 102, 241, 0.1)',
-      borderAccent: 'border-indigo-500/30'
+      accent: '#14b8ab', // Brand teal
+      badgeBg: 'rgba(20, 184, 171, 0.1)',
+      borderAccent: 'border-teal-500/30'
     }
   }
 ];
@@ -42,7 +42,7 @@ const allBrands = [...brands, ...brands, ...brands, ...brands];
 
 function DesktopFrame({ brand, labelBottom }) {
   const label = (
-    <p className="text-xs font-bold tracking-widest uppercase text-[#6366f1] transition-colors group-hover:text-white">
+    <p className="text-xs font-bold tracking-widest uppercase text-[#14b8ab] transition-colors group-hover:text-white">
       {brand.name}
     </p>
   );

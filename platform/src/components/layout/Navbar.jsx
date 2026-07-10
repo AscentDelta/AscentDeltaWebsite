@@ -26,11 +26,16 @@ export default function Navbar() {
             onClick={() => { setMobileOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             className="flex-shrink-0"
           >
-            <img
-              src="/logo-white.png"
-              alt="AscentDelta"
-              className="h-16 w-auto"
-            />
+            <span className="flex items-center gap-2.5">
+              <img
+                src="/logo-mark.png"
+                alt="AscentDelta"
+                className="h-10 w-10 object-contain"
+              />
+              <span className="text-lg font-extrabold tracking-[0.08em] text-white leading-none">
+                ASCENT<span className="bg-gradient-to-r from-[#14b8ab] to-[#1b5e97] bg-clip-text text-transparent">DELTA</span>
+              </span>
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -41,9 +46,9 @@ export default function Navbar() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="flex items-center gap-1.5 text-sm font-bold px-3 py-1 rounded-full border border-[#6366f1] text-[#6366f1] hover:bg-[#6366f1] hover:text-white transition-all duration-200"
+                    className="flex items-center gap-1.5 text-sm font-bold px-3 py-1 rounded-full border border-[#14b8ab] text-[#14b8ab] hover:bg-[#14b8ab] hover:text-white transition-all duration-200"
                   >
-                    <span className="w-1.5 h-1.5 bg-[#6366f1] rounded-full animate-pulse" />
+                    <span className="w-1.5 h-1.5 bg-[#14b8ab] rounded-full animate-pulse" />
                     {link.label}
                   </Link>
                 );
@@ -60,7 +65,7 @@ export default function Navbar() {
                 >
                   {link.label}
                   <span
-                    className={`absolute -bottom-1 left-0 h-[2px] bg-[#6366f1] transition-all duration-300 ${
+                    className={`absolute -bottom-1 left-0 h-[2px] bg-[#14b8ab] transition-all duration-300 ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
@@ -72,9 +77,9 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/contact"
-              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-[#6366f1] hover:bg-[#4f46e5] text-white transition-colors"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-[#14b8ab] hover:bg-[#0f9d92] text-white transition-colors"
             >
-              Get in Touch <ArrowIcon size={13} color="black" />
+              Get in Touch <ArrowIcon size={13} color="white" />
             </Link>
 
             <button
@@ -126,9 +131,9 @@ export default function Navbar() {
             <Link
               to="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-8 flex items-center justify-center gap-2 px-6 py-4 rounded-full text-base font-medium bg-[#6366f1] hover:bg-[#4f46e5] text-white transition-colors"
+              className="mt-8 flex items-center justify-center gap-2 px-6 py-4 rounded-full text-base font-medium bg-[#14b8ab] hover:bg-[#0f9d92] text-white transition-colors"
             >
-              Get in Touch <ArrowIcon size={13} color="black" />
+              Get in Touch <ArrowIcon size={13} color="white" />
             </Link>
           </div>
         </div>

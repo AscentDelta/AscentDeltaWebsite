@@ -47,12 +47,12 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full border border-[#6366f1]"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full border border-[#14b8ab]"
         animate={{ x: pos.x - 20, y: pos.y - 20, width: hovered ? 54 : 40, height: hovered ? 54 : 40, opacity: hidden ? 0 : 0.8 }}
         transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.6 }}
       />
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-[#6366f1]"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-[#14b8ab]"
         animate={{ x: pos.x - 4, y: pos.y - 4, opacity: hidden ? 0 : 1 }}
         style={{ width: 8, height: 8 }}
         transition={{ type: 'spring', stiffness: 500, damping: 28 }}

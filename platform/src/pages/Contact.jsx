@@ -72,35 +72,35 @@ export default function Contact() {
         {/* Contact info — below form on mobile, bottom-left on desktop */}
         <div className="lg:col-span-5 lg:row-start-2 order-3 space-y-6">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#6366f1] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+              <div className="w-12 h-12 rounded-full bg-[#14b8ab] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
               <div>
                 <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Email Us</p>
-                <a href="mailto:ascentxdelta@gmail.com" className="text-lg font-medium text-white hover:text-[#6366f1] transition-colors">
+                <a href="mailto:ascentxdelta@gmail.com" className="text-lg font-medium text-white hover:text-[#14b8ab] transition-colors">
                   ascentxdelta@gmail.com
                 </a>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#6366f1] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+              <div className="w-12 h-12 rounded-full bg-[#14b8ab] flex items-center justify-center text-white flex-shrink-0 shadow-lg">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
               <div>
                 <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Call Us</p>
-                <a href="tel:+918146830484" className="text-lg font-medium text-white hover:text-[#6366f1] transition-colors">
+                <a href="tel:+918146830484" className="text-lg font-medium text-white hover:text-[#14b8ab] transition-colors">
                   +91 8146830484
                 </a>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#6366f1] flex items-center justify-center text-white flex-shrink-0 shadow-lg mt-1">
+              <div className="w-12 h-12 rounded-full bg-[#14b8ab] flex items-center justify-center text-white flex-shrink-0 shadow-lg mt-1">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -112,7 +112,7 @@ export default function Contact() {
                   href="https://maps.app.goo.gl/NyHFpD3vWrvgn6Xz8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-base font-medium text-neutral-300 hover:text-[#6366f1] transition-colors"
+                  className="text-base font-medium text-neutral-300 hover:text-[#14b8ab] transition-colors"
                 >
                   AscentDelta, Ambala-Chandigarh Road,<br />Chandigarh, Zirakpur, Punjab 140603
                 </a>
@@ -130,7 +130,7 @@ export default function Contact() {
 
             {status === 'SUCCESS' ? (
               <div className="text-center py-12">
-                <div className="w-16 h-16 bg-[#6366f1] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md animate-bounce">
+                <div className="w-16 h-16 bg-[#14b8ab] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md animate-bounce">
                   <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
@@ -155,7 +155,7 @@ export default function Contact() {
                       required
                       value={formData.userName}
                       onChange={handleChange}
-                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b8ab] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                   <div>
@@ -165,7 +165,7 @@ export default function Contact() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b8ab] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b8ab] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                   <div>
@@ -189,7 +189,7 @@ export default function Contact() {
                       name="phoneNumber"
                       value={formData.phoneNumber}
                       onChange={handleChange}
-                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
+                      className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b8ab] transition-colors text-white placeholder-neutral-400"
                     />
                   </div>
                 </div>
@@ -202,7 +202,7 @@ export default function Contact() {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400"
+                    className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b8ab] transition-colors text-white placeholder-neutral-400"
                   />
                 </div>
 
@@ -214,12 +214,12 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#6366f1] transition-colors text-white placeholder-neutral-400 resize-none"
+                    className="w-full bg-neutral-950/30 border border-neutral-800 px-4 py-3 rounded-xl focus:outline-none focus:border-[#14b8ab] transition-colors text-white placeholder-neutral-400 resize-none"
                   />
                 </div>
 
                 {status === 'ERROR' && (
-                  <p className="text-red-500 text-sm">Submission failed. Please check credentials.</p>
+                  <p className="text-red-500 text-sm">Something went wrong. Please try again, or email us directly at ascentxdelta@gmail.com.</p>
                 )}
 
                 <button
@@ -241,7 +241,7 @@ export default function Contact() {
       <Dialog isOpen={isOpen} onClose={closeModal}>
         {status === 'SUCCESS' ? (
           <div className="text-center py-12">
-            <div className="w-16 h-16 bg-[#6366f1] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+            <div className="w-16 h-16 bg-[#14b8ab] rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
               <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
               </svg>
@@ -300,7 +300,7 @@ export default function Contact() {
               </div>
 
               {status === 'ERROR' && (
-                <p className="text-red-500 text-sm">Transmission failed. Please check credentials.</p>
+                <p className="text-red-500 text-sm">Something went wrong. Please try again, or email us directly at ascentxdelta@gmail.com.</p>
               )}
 
               <Button

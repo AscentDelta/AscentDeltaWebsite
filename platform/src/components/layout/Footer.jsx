@@ -56,11 +56,14 @@ export default function Footer() {
 
         {/* Brand column */}
         <div className="lg:col-span-1">
-          <Link to="/" className="inline-block mb-6">
-            <img src="/logo-white.png" alt="AscentDelta" className="h-8 w-auto" />
+          <Link to="/" className="inline-flex items-center gap-2.5 mb-6">
+            <img src="/logo-mark.png" alt="AscentDelta" className="h-9 w-9 object-contain" />
+            <span className="text-base font-extrabold tracking-[0.08em] text-white leading-none">
+              ASCENT<span className="bg-gradient-to-r from-[#14b8ab] to-[#1b5e97] bg-clip-text text-transparent">DELTA</span>
+            </span>
           </Link>
           <p className="text-sm text-neutral-400 leading-relaxed mb-8 max-w-xs">
-            A full-stack digital commerce partner that owns your P&L — from website to warehouse.
+            A full-stack digital commerce partner that owns your P&L — from strategy to storefront.
           </p>
           <div className="flex items-center gap-4">
             {socialLinks.map((s) => (
@@ -80,7 +83,7 @@ export default function Footer() {
 
         {/* Company links */}
         <div>
-          <p className="text-xs font-bold tracking-widest uppercase text-[#6366f1] mb-6">
+          <p className="text-xs font-bold tracking-widest uppercase text-[#14b8ab] mb-6">
             Company
           </p>
           <ul className="space-y-3">
@@ -88,7 +91,7 @@ export default function Footer() {
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  className="text-sm text-neutral-400 hover:text-[#6366f1] transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#14b8ab] transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -99,7 +102,7 @@ export default function Footer() {
 
         {/* Services links */}
         <div>
-          <p className="text-xs font-bold tracking-widest uppercase text-[#6366f1] mb-6">
+          <p className="text-xs font-bold tracking-widest uppercase text-[#14b8ab] mb-6">
             Capabilities
           </p>
           <ul className="space-y-3">
@@ -107,7 +110,7 @@ export default function Footer() {
               <li key={s}>
                 <Link
                   to="/services"
-                  className="text-sm text-neutral-400 hover:text-[#6366f1] transition-colors"
+                  className="text-sm text-neutral-400 hover:text-[#14b8ab] transition-colors"
                 >
                   {s}
                 </Link>
@@ -118,15 +121,15 @@ export default function Footer() {
 
         {/* Contact info */}
         <div>
-          <p className="text-xs font-bold tracking-widest uppercase text-[#6366f1] mb-6">
+          <p className="text-xs font-bold tracking-widest uppercase text-[#14b8ab] mb-6">
             Reach Us
           </p>
           <div className="space-y-4">
             <a
               href="mailto:ascentxdelta@gmail.com"
-              className="flex items-center gap-3 text-sm text-neutral-400 hover:text-[#6366f1] transition-colors group"
+              className="flex items-center gap-3 text-sm text-neutral-400 hover:text-[#14b8ab] transition-colors group"
             >
-              <span className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#6366f1] group-hover:text-white transition-colors">
+              <span className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#14b8ab] group-hover:text-white transition-colors">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -135,9 +138,9 @@ export default function Footer() {
             </a>
             <a
               href="tel:+918146830484"
-              className="flex items-center gap-3 text-sm text-neutral-400 hover:text-[#6366f1] transition-colors group"
+              className="flex items-center gap-3 text-sm text-neutral-400 hover:text-[#14b8ab] transition-colors group"
             >
-              <span className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#6366f1] group-hover:text-white transition-colors">
+              <span className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 group-hover:bg-[#14b8ab] group-hover:text-white transition-colors">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
@@ -148,9 +151,9 @@ export default function Footer() {
               href="https://maps.app.goo.gl/NyHFpD3vWrvgn6Xz8"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-start gap-3 text-sm text-neutral-400 hover:text-[#6366f1] transition-colors group"
+              className="flex items-start gap-3 text-sm text-neutral-400 hover:text-[#14b8ab] transition-colors group"
             >
-              <span className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#6366f1] group-hover:text-white transition-colors">
+              <span className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#14b8ab] group-hover:text-white transition-colors">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />

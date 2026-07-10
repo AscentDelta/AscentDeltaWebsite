@@ -67,7 +67,7 @@ export default function Portfolio() {
 
               {/* Detail overlay — slides up from bottom on hover or tap */}
               <div className={`absolute inset-0 bg-neutral-900 border border-neutral-700 transition-transform duration-500 ease-out flex flex-col justify-end p-5 rounded-2xl group-hover:translate-y-0 ${isActive ? 'translate-y-0' : 'translate-y-full'}`}>
-                <span className="text-[10px] font-bold tracking-widest uppercase text-[#6366f1] mb-2">
+                <span className="text-[10px] font-bold tracking-widest uppercase text-[#14b8ab] mb-2">
                   {client.category}
                 </span>
                 <h3 className="text-lg font-black text-white leading-tight mb-1">
