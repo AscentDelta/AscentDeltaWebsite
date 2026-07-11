@@ -68,6 +68,14 @@ export default function GrowthEngine() {
   const [shareOpen, setShareOpen] = useState(false);
   const set = (k) => (v) => setInputs((s) => ({ ...s, [k]: v }));
 
+  // Never show tool state in the address bar — strip any query string that
+  // arrives via old links, bookmarks or history entries.
+  useEffect(() => {
+    if (window.location.search) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, []);
+
   // ---------- the math (same spine as our client decks) ----------
   const m = useMemo(() => {
     const { rev, aov, roas, cogs, ship, fees } = inputs;
