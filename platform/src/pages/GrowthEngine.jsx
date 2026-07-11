@@ -177,7 +177,7 @@ export default function GrowthEngine() {
   const profitable = m.gapRatio >= 1;
 
   const summaryText = useMemo(() =>
-    `My Growth Engine grade: ${m.grade} — ${m.verdict}. Contribution margin ${Math.round(m.cmPct)}%, break-even ROAS ${m.beRoas.toFixed(1)}x vs ${inputs.roas.toFixed(1)}x blended. The 3-month plan is worth ${fmtINR(m.incRevenue)} in incremental revenue. Grade yours at https://ascentdelta.com/growth-engine`,
+    `My Growth Engine grade: ${m.grade} — ${m.verdict}. Contribution margin ${Math.round(m.cmPct)}%, break-even ROAS ${m.beRoas.toFixed(1)}x vs ${inputs.roas.toFixed(1)}x blended. The 3-month plan is worth ${fmtINR(m.incRevenue)} in incremental revenue. Grade yours at https://ascentdelta.vercel.app/growth-engine`,
   [m, inputs.roas]);
 
   const buildReport = useCallback(async () => {

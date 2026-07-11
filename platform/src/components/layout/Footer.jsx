@@ -168,7 +168,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-neutral-400">© 2026 ascentdelta.com · All rights reserved.</p>
+          <p className="text-xs text-neutral-400">© 2026 ascentdelta.vercel.app · All rights reserved.</p>
           <p className="text-xs text-neutral-400 tracking-wide">Scaling D2C India, One Brand at a Time.</p>
         </div>
       </div>

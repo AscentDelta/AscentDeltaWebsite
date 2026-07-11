@@ -19,7 +19,7 @@ const HEAD = 'Arial';
 const BODY = 'Calibri';
 const W = 13.333;
 
-const SITE = 'https://ascentdelta.com';
+const SITE = 'https://ascentdelta.vercel.app';
 const EMAIL = 'ascentxdelta@gmail.com';
 const PHONE_DISPLAY = '+91 81468 30484';
 
@@ -48,7 +48,7 @@ async function fetchLogoDataUrl() {
 
 function contactFooter(slide, pres) {
   slide.addText([
-    { text: 'ascentdelta.com', options: { hyperlink: { url: SITE }, color: C.teal } },
+    { text: 'ascentdelta.vercel.app', options: { hyperlink: { url: SITE }, color: C.teal } },
     { text: '   ·   ', options: { color: C.faint } },
     { text: EMAIL, options: { hyperlink: { url: `mailto:${EMAIL}` }, color: C.teal } },
     { text: '   ·   ', options: { color: C.faint } },
@@ -250,7 +250,7 @@ export async function generateGrowthReport({ inputs, m, gradeColorHex }) {
 
     // contact buttons
     const buttons = [
-      { label: 'ascentdelta.com', url: SITE },
+      { label: 'ascentdelta.vercel.app', url: SITE },
       { label: EMAIL, url: `mailto:${EMAIL}` },
       { label: PHONE_DISPLAY, url: null },
     ];
@@ -268,7 +268,7 @@ export async function generateGrowthReport({ inputs, m, gradeColorHex }) {
 
     s.addText([
       { text: 'Visit ', options: {} },
-      { text: 'ascentdelta.com/growth-engine', options: { hyperlink: { url: `${SITE}/growth-engine` }, color: C.teal } },
+      { text: 'ascentdelta.vercel.app/growth-engine', options: { hyperlink: { url: `${SITE}/growth-engine` }, color: C.teal } },
       { text: ' → run the engine with next quarter’s targets, or book a full audit.', options: {} },
     ].map((r) => ({ text: r.text, options: { fontFace: BODY, italic: true, fontSize: 11, color: C.muted, ...r.options } })), {
       x: 0.6, y: 5.65, w: 12.13, h: 0.3, align: 'center', margin: 0,
