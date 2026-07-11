@@ -57,6 +57,108 @@ function SliderRow({ label, hint, value, min, max, step, onChange, display }) {
   );
 }
 
+// ---------- isometric order-economics visual ----------
+const ISO_PALETTE = {
+  cogs: ['#24425F', '#35597B', '#1B3348'],
+  ship: ['#2E5B85', '#3F76A8', '#234866'],
+  fees: ['#48708F', '#5C8BAD', '#375773'],
+  cm: ['#0FA396', '#1FD4C4', '#0B7F75'],
+};
+
+function IsoEconomics({ cogs, ship, fees }) {
+  const cm = 100 - cogs - ship - fees;
+  const segs = [
+    { key: 'cogs', v: cogs },
+    { key: 'ship', v: ship },
+    { key: 'fees', v: fees },
+    ...(cm > 0 ? [{ key: 'cm', v: cm }] : []),
+  ];
+  const total = segs.reduce((a, s) => a + s.v, 0);
+  const X0 = 30, BAR_W = 460, Y = 74, H = 54, DX = 24, DY = 15;
+  let cx = X0;
+  const blocks = segs.map((s) => {
+    const w = (s.v / total) * BAR_W;
+    const b = { ...s, x: cx, w };
+    cx += w;
+    return b;
+  });
+  const legend = [
+    { label: 'COGS', v: cogs, c: ISO_PALETTE.cogs[1] },
+    { label: 'Ship + RTO', v: ship, c: ISO_PALETTE.ship[1] },
+    { label: 'Fees + pack', v: fees, c: ISO_PALETTE.fees[1] },
+    { label: 'Contribution', v: cm, c: cm > 0 ? '#1FD4C4' : '#f87171' },
+  ];
+  return (
+    <div className="mt-7">
+      <div className="flex items-baseline justify-between mb-1">
+        <p className="text-[11px] font-bold uppercase tracking-widest text-neutral-500">Where every ₹100 of an order goes</p>
+        <p className="text-[11px] text-neutral-600">before ad spend</p>
+      </div>
+      <svg viewBox="0 0 560 186" className="w-full h-auto" role="img" aria-label="Order cost breakdown per hundred rupees">
+        <defs>
+          <filter id="cmGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="0" stdDeviation="7" floodColor="#1FD4C4" floodOpacity="0.55" />
+          </filter>
+          <linearGradient id="isoFloor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#7fd8ff" stopOpacity="0.08" />
+            <stop offset="1" stopColor="#7fd8ff" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        {/* floor line */}
+        <rect x={X0 - 6} y={Y + H + 1} width={BAR_W + DX + 12} height="22" fill="url(#isoFloor)" />
+        {blocks.map((b, i) => {
+          const [front, top, side] = ISO_PALETTE[b.key];
+          const last = i === blocks.length - 1;
+          return (
+            <g key={b.key}>
+              <polygon
+                points={`${b.x},${Y} ${b.x + DX},${Y - DY} ${b.x + b.w + DX},${Y - DY} ${b.x + b.w},${Y}`}
+                fill={top} stroke="rgba(255,255,255,.10)" strokeWidth="0.6"
+              />
+              {last && (
+                <polygon
+                  points={`${b.x + b.w},${Y} ${b.x + b.w + DX},${Y - DY} ${b.x + b.w + DX},${Y - DY + H} ${b.x + b.w},${Y + H}`}
+                  fill={side} stroke="rgba(255,255,255,.08)" strokeWidth="0.6"
+                />
+              )}
+              <rect
+                x={b.x} y={Y} width={b.w} height={H}
+                fill={front} stroke="rgba(255,255,255,.08)" strokeWidth="0.6"
+                filter={b.key === 'cm' ? 'url(#cmGlow)' : undefined}
+              />
+              <rect x={b.x} y={Y + H + 3} width={b.w} height="15" fill={front} opacity="0.10" />
+              {b.w >= 44 && (
+                <text
+                  x={b.x + b.w / 2 + DX / 2} y={Y - DY - 8} textAnchor="middle"
+                  fontSize="13" fontWeight="700" fill={b.key === 'cm' ? '#1FD4C4' : '#cbd5e1'}
+                >
+                  ₹{b.v}
+                </text>
+              )}
+            </g>
+          );
+        })}
+        {legend.map((l, i) => (
+          <g key={l.label} transform={`translate(${X0 + i * 135}, 172)`}>
+            <circle cx="4" cy="-3.5" r="4" fill={l.c} />
+            <text x="14" y="0" fontSize="10.5" fill="#8CA3B8">
+              {l.label}{' '}
+              <tspan fontWeight="700" fill={l.label === 'Contribution' && l.v <= 0 ? '#f87171' : '#e2e8f0'}>
+                {l.v < 0 ? `−₹${Math.abs(l.v)}` : `₹${l.v}`}
+              </tspan>
+            </text>
+          </g>
+        ))}
+      </svg>
+      {cm <= 0 && (
+        <p className="text-[11px] text-red-400 mt-1">
+          Costs exceed the order value — there’s nothing left before ads even start.
+        </p>
+      )}
+    </div>
+  );
+}
+
 // ---------- defaults ----------
 const DEFAULTS = { rev: 2500000, aov: 1000, roas: 2.2, cogs: 35, ship: 18, fees: 7 };
 
@@ -79,8 +181,8 @@ export default function GrowthEngine() {
   // ---------- the math (same spine as our client decks) ----------
   const m = useMemo(() => {
     const { rev, aov, roas, cogs, ship, fees } = inputs;
-    const cmPct = Math.max(1, 100 - cogs - ship - fees); // contribution margin %
-    const beRoas = 100 / cmPct;                          // break-even ROAS
+    const cmPct = 100 - cogs - ship - fees;              // contribution margin % — true value, can go negative
+    const beRoas = cmPct > 0 ? 100 / cmPct : Infinity;   // no break-even exists when the margin is negative
     const adSpend = rev / roas;
     const orders = rev / aov;
     const cmPerOrder = (aov * cmPct) / 100;
@@ -109,13 +211,20 @@ export default function GrowthEngine() {
       verdict = 'The engine is burning cash';
       verdictSub = 'Ad spend is far above what your margins can repay. Fix the funnel before another rupee goes to prospecting.';
     }
+    if (cmPct <= 0) {
+      grade = 'F';
+      verdict = 'Costs exceed revenue — ads can’t fix this';
+      verdictSub = `COGS, logistics and fees consume ${cogs + ship + fees}% of every order. Until the cost stack shrinks, every sale — paid or organic — deepens the loss.`;
+    }
 
     // biggest leak diagnosis
     let leak;
     if (cmPct < 25) {
       leak = {
         title: 'Your biggest leak: unit economics',
-        body: `Only ${cmPct}% of every order survives COGS, logistics and fees. Before touching ad budgets, we attack RTO (WhatsApp address confirmation, COD verification, prepaid nudges) and renegotiate the cost stack — every point of margin recovered lowers your break-even ROAS.`,
+        body: cmPct > 0
+          ? `Only ${cmPct}% of every order survives COGS, logistics and fees. Before touching ad budgets, we attack RTO (WhatsApp address confirmation, COD verification, prepaid nudges) and renegotiate the cost stack — every point of margin recovered lowers your break-even ROAS.`
+          : `You lose ${fmtINR(Math.abs((aov * cmPct) / 100))} on every order before a rupee of marketing. The first move is the cost stack itself — RTO reduction, logistics renegotiation, pricing and pack architecture — because no ad account can outrun a negative margin.`,
         lane: 'Lane 01 · Unit Economics + Lane 04 · Website & CRO',
       };
     } else if (gapRatio < 1.0) {
@@ -177,7 +286,7 @@ export default function GrowthEngine() {
   const profitable = m.gapRatio >= 1;
 
   const summaryText = useMemo(() =>
-    `My Growth Engine grade: ${m.grade} — ${m.verdict}. Contribution margin ${Math.round(m.cmPct)}%, break-even ROAS ${m.beRoas.toFixed(1)}x vs ${inputs.roas.toFixed(1)}x blended. The 3-month plan is worth ${fmtINR(m.incRevenue)} in incremental revenue. Grade yours at https://ascentdelta.vercel.app/growth-engine`,
+    `My Growth Engine grade: ${m.grade} — ${m.verdict}. Contribution margin ${Math.round(m.cmPct)}%, break-even ROAS ${Number.isFinite(m.beRoas) ? `${m.beRoas.toFixed(1)}x` : 'unreachable (negative margin)'} vs ${inputs.roas.toFixed(1)}x blended. The 3-month plan is worth ${fmtINR(m.incRevenue)} in incremental revenue. Grade yours at https://ascentdelta.vercel.app/growth-engine`,
   [m, inputs.roas]);
 
   const buildReport = useCallback(async () => {
@@ -310,7 +419,7 @@ export default function GrowthEngine() {
             {/* ROAS gauge */}
             <div className="mb-7">
               <div className="flex justify-between text-[11px] font-bold uppercase tracking-widest text-neutral-500 mb-2">
-                <span>Break-even ROAS: <span className="text-white">{m.beRoas.toFixed(1)}x</span></span>
+                <span>Break-even ROAS: <span className="text-white">{Number.isFinite(m.beRoas) ? `${m.beRoas.toFixed(1)}x` : 'none'}</span></span>
                 <span>Your ROAS: <span style={{ color: profitable ? TEAL_BRIGHT : '#f87171' }}>{inputs.roas.toFixed(1)}x</span></span>
               </div>
               <div className="relative h-3 rounded-full bg-neutral-800 overflow-visible">
@@ -320,13 +429,19 @@ export default function GrowthEngine() {
                   transition={{ type: 'spring', stiffness: 120, damping: 20 }}
                   style={{ background: `linear-gradient(90deg, ${TEAL}, ${profitable ? TEAL_BRIGHT : '#f87171'})` }}
                 />
-                <motion.div
-                  className="absolute -top-1.5 w-0.5 h-6 bg-white"
-                  animate={{ left: `${Math.min(100, (m.beRoas / 8) * 100)}%` }}
-                  transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-                />
+                {Number.isFinite(m.beRoas) && (
+                  <motion.div
+                    className="absolute -top-1.5 w-0.5 h-6 bg-white"
+                    animate={{ left: `${Math.min(100, (m.beRoas / 8) * 100)}%` }}
+                    transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+                  />
+                )}
               </div>
-              <p className="text-[11px] text-neutral-600 mt-2">The white marker is your break-even line — everything right of it is profit.</p>
+              <p className="text-[11px] text-neutral-600 mt-2">
+                {Number.isFinite(m.beRoas)
+                  ? 'The white marker is your break-even line — everything right of it is profit.'
+                  : 'No break-even exists at a negative margin — every order adds to the loss, whatever the ROAS.'}
+              </p>
             </div>
 
             {/* stat grid */}
@@ -335,7 +450,7 @@ export default function GrowthEngine() {
                 { label: 'Contribution / order', val: m.cmPerOrder, fmt: fmtINR },
                 { label: 'Contribution margin', val: m.cmPct, fmt: (v) => `${Math.round(v)}%` },
                 { label: 'Monthly ad spend', val: m.adSpend, fmt: fmtINR },
-                { label: 'Monthly profit after ads', val: m.contribution, fmt: fmtINR, colored: true },
+                { label: 'Contribution after ads', val: m.contribution, fmt: fmtINR, colored: true },
               ].map((s) => (
                 <div key={s.label} className="bg-neutral-950 px-4 py-4">
                   <AnimatedValue
@@ -347,6 +462,9 @@ export default function GrowthEngine() {
                 </div>
               ))}
             </div>
+
+            {/* isometric order-economics breakdown */}
+            <IsoEconomics cogs={inputs.cogs} ship={inputs.ship} fees={inputs.fees} />
           </div>
         </div>
       </div>
@@ -513,13 +631,28 @@ export default function GrowthEngine() {
         className="relative rounded-[2.5rem] border border-neutral-800 overflow-hidden px-8 py-14 md:px-16 text-center"
         style={{ background: 'radial-gradient(ellipse 90% 120% at 50% -20%, rgba(20,184,171,0.14), rgba(27,94,151,0.06) 55%, transparent 80%)' }}
       >
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] text-white mb-4">
-          That <AnimatedValue value={m.incContribution} className="bg-gradient-to-r from-[#1fd4c4] to-[#2f7fc0] bg-clip-text text-transparent" /> isn’t hypothetical.
-        </h2>
-        <p className="text-lg text-neutral-300 font-light leading-relaxed max-w-2xl mx-auto mb-8">
-          It’s what a structured 3-month engagement is built to unlock. Bring us these numbers —
-          we’ll bring the audit that proves where it’s hiding.
-        </p>
+        {m.incContribution > 0 ? (
+          <>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] text-white mb-4">
+              That <AnimatedValue value={m.incContribution} className="bg-gradient-to-r from-[#1fd4c4] to-[#2f7fc0] bg-clip-text text-transparent" /> isn’t hypothetical.
+            </h2>
+            <p className="text-lg text-neutral-300 font-light leading-relaxed max-w-2xl mx-auto mb-8">
+              It’s what a structured 3-month engagement is built to unlock. Bring us these numbers —
+              we’ll bring the audit that proves where it’s hiding.
+            </p>
+          </>
+        ) : (
+          <>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] text-white mb-4">
+              First, we stop the{' '}
+              <span className="bg-gradient-to-r from-[#f87171] to-[#fb923c] bg-clip-text text-transparent">bleeding</span>.
+            </h2>
+            <p className="text-lg text-neutral-300 font-light leading-relaxed max-w-2xl mx-auto mb-8">
+              At a negative contribution margin, growth only multiplies losses. The engagement starts
+              with the cost stack — RTO, logistics, pricing — before a rupee more goes to ads.
+            </p>
+          </>
+        )}
         <button
           onClick={() => navigate('/contact')}
           className="rounded-full px-8 py-4 text-base font-semibold text-white shadow-xl transition-all hover:shadow-[0_20px_50px_rgba(20,184,171,0.25)] hover:scale-[1.03]"

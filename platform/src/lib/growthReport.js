@@ -142,10 +142,10 @@ export async function generateGrowthReport({ inputs, m, gradeColorHex }) {
     const stats = [
       ['Contribution margin', `${Math.round(m.cmPct)}%`, C.white],
       ['Contribution per order', fmtINR(m.cmPerOrder), C.white],
-      ['Break-even ROAS', `${m.beRoas.toFixed(1)}x`, C.white],
+      ['Break-even ROAS', Number.isFinite(m.beRoas) ? `${m.beRoas.toFixed(1)}x` : '— (negative margin)', C.white],
       ['Your blended ROAS', `${inputs.roas.toFixed(1)}x`, m.gapRatio >= 1 ? C.teal : C.red],
       ['Monthly ad spend', fmtINR(m.adSpend), C.white],
-      ['Monthly profit after ads', fmtINR(m.contribution), m.contribution >= 0 ? C.teal : C.red],
+      ['Contribution after ads', fmtINR(m.contribution), m.contribution >= 0 ? C.teal : C.red],
     ];
     stats.forEach(([k, v, color], i) => {
       const y = 2.55 + i * 0.62;
