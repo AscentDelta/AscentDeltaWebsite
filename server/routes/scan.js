@@ -5,19 +5,58 @@ import { Resend } from 'resend';
 
 const router = Router();
 
-const OPENROUTER_KEY = () => process.env.OPENROUTER_API_KEY;
+// Key ring: OPENROUTER_API_KEYS is a comma-separated list rotated automatically
+// when a key is exhausted; legacy single OPENROUTER_API_KEY rides along as a
+// final fallback if it differs.
+const OPENROUTER_KEYS = () => {
+  const ring = (process.env.OPENROUTER_API_KEYS || '')
+    .split(',')
+    .map((k) => k.trim())
+    .filter(Boolean);
+  if (process.env.OPENROUTER_API_KEY) ring.push(process.env.OPENROUTER_API_KEY.trim());
+  return [...new Set(ring)];
+};
+
+// Best-first ladder of free models, verified against the live OpenRouter
+// catalog on 2026-07-11. Any model failure advances down the ladder; a key
+// exhaustion switches keys and restarts from the top.
 const OPENROUTER_MODELS = [
-  'deepseek/deepseek-v4-flash:free',
-  'google/gemma-3-27b-it:free',
+  'nvidia/nemotron-3-ultra-550b-a55b:free',
+  'openai/gpt-oss-120b:free',
+  'nvidia/nemotron-3-super-120b-a12b:free',
+  'tencent/hy3:free',
+  'qwen/qwen3-next-80b-a3b-instruct:free',
+  'nousresearch/hermes-3-llama-3.1-405b:free',
+  'google/gemma-4-31b-it:free',
+  'google/gemma-4-26b-a4b-it:free',
+  'poolside/laguna-m.1:free',
   'meta-llama/llama-3.3-70b-instruct:free',
-  'qwen/qwen3-235b-a22b:free',
-  'qwen/qwen3-8b:free',
-  'microsoft/phi-4:free',
-  'google/gemma-3-12b-it:free',
-  'mistralai/mistral-7b-instruct:free',
-  'meta-llama/llama-3.1-8b-instruct:free',
-  'google/gemma-3n-e4b-it:free',
+  'qwen/qwen3-coder:free',
+  'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
+  'nvidia/nemotron-3-nano-30b-a3b:free',
+  'openai/gpt-oss-20b:free',
 ];
+
+// Keys that hit their daily/credit ceiling are skipped for a cooldown window
+// so later scans don't burn attempts on a dead key.
+const keyExhaustedUntil = new Map();
+const KEY_COOLDOWN_MS = 15 * 60 * 1000;
+
+// Key-level failures end the model ladder for that key; everything else is a
+// model-level failure and just advances to the next model.
+function isKeyLevelError(status, message = '') {
+  if (status === 401 || status === 402 || status === 403) return true;
+  if (status === 429) {
+    const msg = message.toLowerCase();
+    return (
+      msg.includes('free-models-per-day') ||
+      msg.includes('daily limit') ||
+      msg.includes('credits') ||
+      msg.includes('quota')
+    );
+  }
+  return false;
+}
 const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 // ─── Main scan endpoint ────────────────────────────────────────────────────────
@@ -177,7 +216,15 @@ Return this exact JSON:
 
 function parseJSON(text) {
   const cleaned = text.trim().replace(/^```json?\s*/i, '').replace(/\s*```$/i, '');
-  return JSON.parse(cleaned);
+  try {
+    return JSON.parse(cleaned);
+  } catch {
+    // some models wrap the JSON in prose — salvage the outermost object
+    const start = cleaned.indexOf('{');
+    const end = cleaned.lastIndexOf('}');
+    if (start !== -1 && end > start) return JSON.parse(cleaned.slice(start, end + 1));
+    throw new Error('no JSON object in response');
+  }
 }
 
 // ─── Gemini 2.0 Flash (primary) ───────────────────────────────────────────────
@@ -218,65 +265,104 @@ async function tryGemini(prompt) {
   throw new Error(lastError || 'All Gemini keys failed');
 }
 
-// ─── OpenRouter fallback chain ─────────────────────────────────────────────────
+// ─── OpenRouter: key ring × best-first model ladder ────────────────────────────
+// For each key, walk the 14-model ladder top-down. A model failure (bad model,
+// 5xx, timeout, empty or unparseable response, upstream 429) advances to the
+// next model on the SAME key. A key-level failure (401/402/403, daily free
+// quota) cools that key down and switches to the next key — restarting the
+// ladder from the best model.
 async function tryOpenRouter(prompt) {
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  const allKeys = OPENROUTER_KEYS();
+  if (!allKeys.length) throw new Error('No OpenRouter API keys configured');
+
+  const now = Date.now();
+  const fresh = allKeys.filter((k) => (keyExhaustedUntil.get(k) || 0) < now);
+  const ring = fresh.length ? fresh : allKeys; // if everything is cooling down, try anyway
+
   let lastError = '';
+  for (let k = 0; k < ring.length; k++) {
+    const key = ring[k];
+    const keyLabel = `key ${k + 1}/${ring.length} (…${key.slice(-4)})`;
 
-  for (let i = 0; i < OPENROUTER_MODELS.length; i++) {
-    const model = OPENROUTER_MODELS[i];
-    if (i > 0) await sleep(4000);
-    try {
-      console.log(`Trying OpenRouter model: ${model}`);
-      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENROUTER_KEY()}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://ascentdelta.vercel.app',
-          'X-Title': 'AscentDelta AI Scan',
-        },
-        body: JSON.stringify({
-          model,
-          messages: [{ role: 'user', content: prompt }],
-          temperature: 0.3,
-        }),
-      });
+    modelLoop:
+    for (let i = 0; i < OPENROUTER_MODELS.length; i++) {
+      const model = OPENROUTER_MODELS[i];
+      if (i > 0) await sleep(1500);
+      console.log(`OpenRouter ${keyLabel} → model ${i + 1}/${OPENROUTER_MODELS.length}: ${model}`);
 
-      const result = await res.json();
-      if (!res.ok) {
-        const code = result?.error?.code;
-        lastError = result?.error?.message || 'Unavailable';
-        console.warn(`${model} skipped (${code}): ${lastError}`);
-        continue;
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 90000);
+      try {
+        const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          signal: controller.signal,
+          headers: {
+            'Authorization': `Bearer ${key}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://ascentdelta.vercel.app',
+            'X-Title': 'AscentDelta AI Scan',
+          },
+          body: JSON.stringify({
+            model,
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.3,
+          }),
+        });
+        const result = await res.json();
+
+        if (!res.ok) {
+          const msg = result?.error?.message || `HTTP ${res.status}`;
+          lastError = `${model}: ${msg}`;
+          if (isKeyLevelError(res.status, msg)) {
+            keyExhaustedUntil.set(key, Date.now() + KEY_COOLDOWN_MS);
+            console.warn(`${keyLabel} exhausted (${res.status}): ${msg} — switching key, restarting ladder`);
+            break modelLoop;
+          }
+          console.warn(`${model} failed (${res.status}): ${msg} — next model`);
+          continue;
+        }
+
+        const content = result?.choices?.[0]?.message?.content;
+        if (!content) {
+          lastError = `${model}: empty response`;
+          console.warn(`${lastError} — next model`);
+          continue;
+        }
+
+        const parsed = parseJSON(content); // throws → treated as model failure below
+        console.log(`✓ OpenRouter succeeded: ${model} on ${keyLabel}`);
+        return parsed;
+      } catch (err) {
+        lastError = `${model}: ${err.name === 'AbortError' ? 'timed out after 90s' : err.message}`;
+        console.warn(`${lastError} — next model`);
+      } finally {
+        clearTimeout(timer);
       }
-
-      return parseJSON(result.choices[0].message.content);
-    } catch (err) {
-      if (err.message.includes('JSON')) throw err;
-      lastError = err.message;
-      console.warn(`${model} failed: ${err.message}`);
     }
   }
-  throw new Error(`All OpenRouter models failed. Last: ${lastError}`);
+  throw new Error(`All OpenRouter keys and models failed. Last: ${lastError}`);
 }
 
 // ─── Main AI analysis entry point ─────────────────────────────────────────────
 async function analyzeWithAI(data) {
   const { text: prompt } = buildPrompt(data);
 
-  // 1. Try Gemini first
+  // 1. OpenRouter key ring × model ladder (primary)
   try {
-    const result = await tryGemini(prompt);
-    console.log('✓ Gemini succeeded');
-    return result;
+    return await tryOpenRouter(prompt);
   } catch (err) {
-    console.warn(`Gemini failed: ${err.message} — falling back to OpenRouter…`);
+    console.warn(`OpenRouter chain failed: ${err.message} — falling back to Gemini…`);
   }
 
-  // 2. Fall back to OpenRouter models
-  return tryOpenRouter(prompt);
+  // 2. Gemini as the final safety net
+  const result = await tryGemini(prompt);
+  console.log('✓ Gemini succeeded');
+  return result;
 }
+
+// exported for smoke tests only
+export const __testables = { tryOpenRouter, parseJSON, OPENROUTER_KEYS, OPENROUTER_MODELS };
 
 // ─── Email report ──────────────────────────────────────────────────────────────
 async function sendReportEmail(email, report) {
