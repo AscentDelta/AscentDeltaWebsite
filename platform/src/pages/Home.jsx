@@ -176,7 +176,7 @@ export default function Home() {
               {[
                 { value: '3', label: 'Brands Scaled' },
                 { value: '5', label: 'Growth Levers' },
-                { value: '100', label: 'Days to Impact' },
+                { value: '3', label: 'Months to Impact' },
                 { value: 'High', label: 'Business Impact' },
               ].map((stat) => (
                 <div key={stat.label}>
@@ -237,7 +237,7 @@ export default function Home() {
           <p className="text-xs font-bold tracking-widest uppercase text-[#14b8ab] mb-4">How We Engage</p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.05] text-white mb-4">
             The First{' '}
-            <span className="bg-gradient-to-r from-[#1fd4c4] to-[#2f7fc0] bg-clip-text text-transparent">100 Days</span>
+            <span className="bg-gradient-to-r from-[#1fd4c4] to-[#2f7fc0] bg-clip-text text-transparent">3 Months</span>
           </h2>
           <p className="text-xl md:text-2xl text-neutral-300 font-light leading-relaxed max-w-2xl">
             No retainers that drift. Every engagement follows a structured, accountable roadmap from day one.
@@ -246,17 +246,17 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              days: 'Days 0–15',
+              days: 'Weeks 1–2',
               title: 'Diagnose',
               desc: 'Full P&L audit, channel deep-dive, cohort and margin analysis. You get a clear picture of where revenue leaks and where the upside sits.',
             },
             {
-              days: 'Days 16–45',
+              days: 'Weeks 3–6',
               title: 'Build',
               desc: 'Fix the foundations — storefront conversion, tracking, creative systems, and channel structure — so every rupee of spend works harder.',
             },
             {
-              days: 'Days 46–100',
+              days: 'Weeks 7–12',
               title: 'Scale',
               desc: 'Ramp profitable spend, open new channels and partnerships, and report against contribution margin — not vanity metrics.',
             },
@@ -303,7 +303,7 @@ export default function Home() {
             </h2>
             <p className="text-base md:text-lg text-neutral-400 font-light leading-relaxed max-w-xl">
               Drag six sliders to your real numbers and get your growth grade, your break-even
-              ROAS, and a 100-day projection. No email. 60 seconds.
+              ROAS, and a 3-month projection — downloadable as a full branded report.
             </p>
           </div>
           <span
@@ -326,7 +326,7 @@ export default function Home() {
             <span className="bg-gradient-to-r from-[#1fd4c4] to-[#2f7fc0] bg-clip-text text-transparent">growth curve?</span>
           </h2>
           <p className="text-lg md:text-xl text-neutral-300 font-light leading-relaxed max-w-2xl mx-auto mb-10">
-            Tell us where your P&L stands today. We'll show you exactly what the next 100 days should look like — no decks, no fluff.
+            Tell us where your P&L stands today. We'll show you exactly what the next 3 months should look like — no decks, no fluff.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.button

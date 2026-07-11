@@ -1,7 +1,7 @@
 export const blogs = [
   {
     slug: 'd2c-unit-economics-india',
-    title: 'Why D2C Unit Economics Break in India — And How to Fix Them in 100 Days',
+    title: 'Why D2C Unit Economics Break in India — And How to Fix Them in 3 Months',
     thumbnail: '/Blogs/D2C in India.png',
     category: 'D2C Strategy',
     readTime: '8 min read',
@@ -248,7 +248,7 @@ export const blogs = [
       },
       {
         type: 'p',
-        text: "Profitability isn't accidental. It's engineered. And with the right operational focus, it can be achieved within 100 days.",
+        text: "Profitability isn't accidental. It's engineered. And with the right operational focus, it can be achieved within 3 months.",
       },
     ],
   },

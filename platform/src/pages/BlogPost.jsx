@@ -162,7 +162,7 @@ export default function BlogPost() {
             Build Your <span style={{color: '#14b8ab'}}>AscentDelta</span> Plan
           </h3>
           <p className="text-neutral-400 text-sm mb-6 max-w-md mx-auto">
-            Let's audit your D2C business and engineer a path to profitability — in 100 days.
+            Let's audit your D2C business and engineer a path to profitability — in 3 months.
           </p>
           <Link
             to="/contact"
