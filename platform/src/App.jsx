@@ -9,6 +9,7 @@ import Blogs from './pages/Blogs';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import AIScan from './pages/AIScan';
+import GrowthEngine from './pages/GrowthEngine';
 import HeroVisual from './components/ui/HeroVisual';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/ui/CustomCursor';
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/blogs/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/ai-scan" element={<AIScan />} />
+          <Route path="/growth-engine" element={<GrowthEngine />} />
         </Routes>
       </main>
       <Footer />

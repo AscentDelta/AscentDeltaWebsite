@@ -9,6 +9,7 @@ const navLinks = [
   { path: '/services', label: 'Capabilities' },
   { path: '/portfolio', label: 'Portfolio' },
   { path: '/blogs', label: 'Blogs' },
+  { path: '/growth-engine', label: 'Growth Engine' },
   { path: '/ai-scan', label: 'AI Scan', highlight: true },
 ];
 

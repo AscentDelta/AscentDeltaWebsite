@@ -286,6 +286,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* GROWTH ENGINE TEASER */}
+      <section className="py-8 max-w-7xl mx-auto px-6 w-full relative z-10">
+        <Link
+          to="/growth-engine"
+          className="group relative flex flex-col md:flex-row md:items-center gap-6 rounded-[2rem] border border-neutral-800 hover:border-[#14b8ab]/70 transition-colors duration-500 px-8 py-10 md:px-12 overflow-hidden"
+          style={{ background: 'linear-gradient(100deg, rgba(20,184,171,0.10), rgba(27,94,151,0.06) 60%, transparent)' }}
+        >
+          <div className="flex-1">
+            <p className="text-xs font-bold tracking-widest uppercase text-[#14b8ab] mb-3">
+              New · Interactive
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-3">
+              Are your ads buying{' '}
+              <span className="bg-gradient-to-r from-[#1fd4c4] to-[#2f7fc0] bg-clip-text text-transparent">profit — or losses?</span>
+            </h2>
+            <p className="text-base md:text-lg text-neutral-400 font-light leading-relaxed max-w-xl">
+              Drag six sliders to your real numbers and get your growth grade, your break-even
+              ROAS, and a 100-day projection. No email. 60 seconds.
+            </p>
+          </div>
+          <span
+            className="flex-shrink-0 self-start md:self-center rounded-full px-7 py-4 text-base font-semibold text-white shadow-xl transition-all group-hover:shadow-[0_20px_50px_rgba(20,184,171,0.25)] group-hover:scale-[1.03]"
+            style={{ background: 'linear-gradient(110deg, #14b8ab, #1b5e97)' }}
+          >
+            Grade my growth engine →
+          </span>
+        </Link>
+      </section>
+
       {/* CLOSING CTA */}
       <section className="py-24 max-w-7xl mx-auto px-6 w-full relative z-10">
         <div
