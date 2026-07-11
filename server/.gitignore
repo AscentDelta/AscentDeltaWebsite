@@ -2,3 +2,6 @@ node_modules/
 .env
 .env.*
 *.log
+
+# Puppeteer's local Chrome cache (see .puppeteerrc.cjs)
+.cache/

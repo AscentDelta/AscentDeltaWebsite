@@ -1,0 +1,28 @@
+# Render Blueprint — deploys the AI Scan backend (server/) as a web service.
+# In the Render dashboard: New → Blueprint → select this repo, and Render reads
+# this file. Secret values (sync: false) are prompted for in the dashboard and
+# never live in the repo.
+services:
+  - type: web
+    name: ascentdelta-scan-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: FRONTEND_URL
+        value: https://ascentdelta.vercel.app
+      - key: OPENROUTER_API_KEYS
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY_2
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: PAGESPEED_API_KEY
+        sync: false
