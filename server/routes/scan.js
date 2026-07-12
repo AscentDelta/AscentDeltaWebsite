@@ -76,21 +76,43 @@ router.post('/scan', async (req, res) => {
       axios.get(`${psBase}&strategy=desktop${psKey}`, { timeout: 60000 }),
     ]);
 
-    // 2. Puppeteer — HTML extraction (no screenshot needed for DeepSeek)
+    // 2. Extract speed data immediately so the big PSI payloads can be GC'd
+    //    before Chrome (the memory hog) launches.
+    const speed = extractSpeedData(mobilePS, desktopPS);
+
+    // 3. Puppeteer — HTML extraction. On Render's free 512MB instance Chrome is
+    //    the OOM risk, so it runs with hard low-memory flags, images/fonts/media
+    //    blocked, and a fetch-based fallback if it can't run at all.
     let pageHtml = '';
     let pageTitle = '';
     let metaTags = {};
     let keyElements = {};
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
-    });
-
+    let browser = null;
     try {
+      browser = await puppeteer.launch({
+        headless: true,
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+        args: [
+          '--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu',
+          '--single-process', '--no-zygote', '--disable-extensions', '--disable-background-networking',
+          '--disable-features=site-per-process,TranslateUI', '--renderer-process-limit=1', '--mute-audio',
+        ],
+      });
+    } catch (err) {
+      console.warn(`Puppeteer launch failed (${err.message}) — falling back to plain fetch extraction`);
+    }
+
+    if (browser) try {
       const page = await browser.newPage();
-      await page.setViewport({ width: 1440, height: 900 });
+      // block heavy resources — we only need the DOM
+      await page.setRequestInterception(true);
+      page.on('request', (req) => {
+        const type = req.resourceType();
+        if (type === 'image' || type === 'media' || type === 'font') req.abort();
+        else req.continue();
+      });
+      await page.setViewport({ width: 1280, height: 800 });
       await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36');
       // Use domcontentloaded — faster, works on slow/heavy sites
       try {
@@ -141,13 +163,50 @@ router.post('/scan', async (req, res) => {
         });
       } catch { keyElements = {}; }
     } finally {
-      await browser.close();
+      if (browser) await browser.close().catch(() => {});
     }
 
-    // 3. Extract speed data
-    const speed = extractSpeedData(mobilePS, desktopPS);
+    // Fallback: no Chrome (or it produced nothing) — extract what we can with plain fetch
+    if (!pageHtml) {
+      try {
+        const res = await axios.get(normalizedUrl, {
+          timeout: 25000,
+          maxContentLength: 2 * 1024 * 1024,
+          headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' },
+        });
+        const html = String(res.data);
+        pageHtml = html.slice(0, 4000);
+        pageTitle = (html.match(/<title[^>]*>([^<]*)<\/title>/i) || [])[1]?.trim() || '';
+        metaTags = {};
+        for (const m of html.matchAll(/<meta[^>]+(?:name|property)=["']([^"']+)["'][^>]+content=["']([^"']*)["']/gi)) {
+          metaTags[m[1]] = m[2];
+        }
+        const count = (re) => (html.match(re) || []).length;
+        keyElements = {
+          h1: (html.match(/<h1[^>]*>([\s\S]{0,300}?)<\/h1>/i) || [])[1]?.replace(/<[^>]+>/g, '').trim() || null,
+          h2s: [...html.matchAll(/<h2[^>]*>([\s\S]{0,200}?)<\/h2>/gi)].map((m) => m[1].replace(/<[^>]+>/g, '').trim()).slice(0, 10),
+          ctaButtons: count(/<button|class=["'][^"']*btn|class=["'][^"']*cta/gi),
+          addToCartBtns: count(/add-to-cart|addtocart|name=["']add["']/gi),
+          images: count(/<img/gi),
+          forms: count(/<form/gi),
+          inputFields: count(/<input/gi),
+          hasLiveChat: /class=["'][^"']*chat|crisp|intercom|tawk/i.test(html),
+          hasReviews: /review|rating|testimonial|judge\.me/i.test(html),
+          hasNewsletterForm: /<input[^>]+type=["']email["']/i.test(html),
+          hasWhatsapp: /wa\.me|whatsapp/i.test(html),
+          navLinks: (html.match(/<nav[\s\S]*?<\/nav>/i)?.[0].match(/<a\s/gi) || []).length,
+          footerLinks: (html.match(/<footer[\s\S]*?<\/footer>/i)?.[0].match(/<a\s/gi) || []).length,
+          priceElements: [...html.matchAll(/class=["'][^"']*price[^"']*["'][^>]*>([^<]{1,40})</gi)].map((m) => m[1].trim()).slice(0, 5),
+          hasCartIcon: /class=["'][^"']*cart|href=["'][^"']*cart/i.test(html),
+          hasStickyHeader: null,
+        };
+        console.log('✓ Fallback fetch extraction succeeded');
+      } catch (err) {
+        console.warn(`Fallback fetch extraction failed: ${err.message} — continuing with PSI data only`);
+      }
+    }
 
-    // 4. DeepSeek AI analysis via OpenRouter
+    // 4. AI analysis via OpenRouter key ring
     const ai = await analyzeWithAI({ url: normalizedUrl, pageTitle, metaTags, speed, keyElements });
 
     // 5. Build report

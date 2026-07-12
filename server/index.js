@@ -18,7 +18,15 @@ app.use(express.json());
 
 app.use('/api', scanRouter);
 
-app.get('/health', (_, res) => res.json({ status: 'ok' }));
+app.get('/health', (_, res) => res.json({
+  status: 'ok',
+  uptimeSec: Math.round(process.uptime()),
+  rssMb: Math.round(process.memoryUsage().rss / 1024 / 1024),
+}));
+
+// Never let a stray rejection take the whole service down mid-request.
+process.on('unhandledRejection', (err) => console.error('unhandledRejection:', err?.message || err));
+process.on('uncaughtException', (err) => console.error('uncaughtException:', err?.message || err));
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`AscentDelta scan server running on http://localhost:${PORT}`));
