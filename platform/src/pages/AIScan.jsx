@@ -160,12 +160,23 @@ export default function AIScan() {
     }
   };
 
-  const downloadPDF = useCallback(() => {
-    const prev = document.title;
-    document.title = 'AscentDelta AI Scan';
-    window.print();
-    document.title = prev;
-  }, []);
+  const [downloading, setDownloading] = useState(false);
+  const downloadReport = useCallback(async () => {
+    if (!report) return;
+    setDownloading(true);
+    try {
+      const { generateScanReport } = await import('../lib/scanReport');
+      const { blob, fileName } = await generateScanReport(report);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(url);
+    } finally {
+      setDownloading(false);
+    }
+  }, [report]);
 
   return (
     <div className="w-full max-w-5xl mx-auto px-6 py-24">
@@ -322,11 +333,12 @@ export default function AIScan() {
                 <p className="text-sm text-neutral-400 mt-1">{report.url} · {new Date(report.generatedAt).toLocaleString()}</p>
               </div>
               <button
-                onClick={downloadPDF}
-                className="flex items-center gap-2 text-white text-sm font-bold px-5 py-3 rounded-xl hover:opacity-80 transition-opacity"
-                style={{ background: '#14b8ab' }}
+                onClick={downloadReport}
+                disabled={downloading}
+                className="flex items-center gap-2 text-white text-sm font-bold px-5 py-3 rounded-xl hover:opacity-80 transition-opacity disabled:opacity-60 disabled:cursor-wait"
+                style={{ background: 'linear-gradient(110deg, #14b8ab, #1b5e97)' }}
               >
-                ↓ Download / Print
+                {downloading ? 'Preparing your report…' : '↓ Download full report (.pptx)'}
               </button>
             </div>
 
