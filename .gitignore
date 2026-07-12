@@ -25,3 +25,6 @@ npm-debug.log*
 *.pptx
 .deck-build/
 
+# Sales leads & outreach drafts — private, never push to GitHub
+leads/
+
