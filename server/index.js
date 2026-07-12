@@ -22,3 +22,17 @@ app.get('/health', (_, res) => res.json({ status: 'ok' }));
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`AscentDelta scan server running on http://localhost:${PORT}`));
+
+// Keep the free Render instance awake: hit our own public /health every 10 minutes
+// so the 15-minute idle spin-down never triggers. RENDER_EXTERNAL_URL is injected by
+// Render automatically; locally it's absent, so this no-ops. Override with
+// KEEP_ALIVE_URL if the service ever moves.
+const KEEP_ALIVE_URL = process.env.KEEP_ALIVE_URL || process.env.RENDER_EXTERNAL_URL;
+if (KEEP_ALIVE_URL) {
+  const ping = () =>
+    fetch(`${KEEP_ALIVE_URL}/health`)
+      .then((res) => console.log(`[keep-alive] ${KEEP_ALIVE_URL}/health → ${res.status}`))
+      .catch((err) => console.warn(`[keep-alive] ping failed: ${err.message}`));
+  setInterval(ping, 10 * 60 * 1000);
+  ping();
+}
